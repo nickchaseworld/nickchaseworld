@@ -11,7 +11,7 @@ class Home extends React.Component {
 
     };
     
-  }
+  } 
 
   componentDidMount()
   {
@@ -23,7 +23,7 @@ class Home extends React.Component {
 
     return (   
       <div className="container"> {/* DO NOT REMOVE THIS DIV COMPONENT*/}
-       <h1>hello</h1>
+       <h1>burnerplate</h1>
       </div>
 
       )
