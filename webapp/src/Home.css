@@ -5,7 +5,7 @@
     width: 80%;
     height: 100%;
     flex-direction: column;
-    background-color: red;
+    background-color: red; 
 }
 
 
@@ -15,6 +15,6 @@
 
 @media only screen and (min-width: 0px) and (max-width: 800px)
 {
-    
+    .me {}
 }
 
