@@ -8,9 +8,7 @@ class Home extends React.Component {
   constructor() {
     super();
     this.state = {
-      songs: [],
-      videos: [],
-      
+
     };
     
   }
