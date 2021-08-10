@@ -45,11 +45,11 @@ class Home extends React.Component {
         </Nav>
         </Container>
       </Navbar> {/**/}
-        {this.state.page == "HOME" && <div style={{margin: '0 auto'}}>
+        {this.state.page === "HOME" && <div style={{margin: '0 auto'}}>
           <br></br>
           <center> <p className="subheader">fled the scene</p>
           <p className="subheader">love cuts like ______</p>
-          <img src="https://drive.google.com/uc?export=view&id=1ocuFnKiHPoAeAN7KOhCXYtE9oa94-9uk"></img>
+          <img src="https://drive.google.com/uc?export=view&id=1ocuFnKiHPoAeAN7KOhCXYtE9oa94-9uk" alt="nickchase"></img>
           <br></br>
           <br></br>
           {words.map(word => (<div>
@@ -62,10 +62,10 @@ class Home extends React.Component {
           
           
           </div>}
-        {this.state.page == "VIDEOS" && <div><h1>VIDEOS PAGE</h1></div>}
-        {this.state.page == "INTAKE" && <div><h1>INTAKE PAGE</h1></div>}
-        {this.state.page == "STREAM" && <div><h1>STREAM PAGE</h1></div>}
-        {this.state.page == "READING" && <div><h1>READING PAGE</h1></div>}
+        {this.state.page === "VIDEOS" && <div><h1>VIDEOS PAGE</h1></div>}
+        {this.state.page === "INTAKE" && <div><h1>INTAKE PAGE</h1></div>}
+        {this.state.page === "STREAM" && <div><h1>STREAM PAGE</h1></div>}
+        {this.state.page === "READING" && <div><h1>READING PAGE</h1></div>}
       </div>
 
       )
