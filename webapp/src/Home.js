@@ -1,7 +1,5 @@
 import React from 'react';
-import Navbar from 'react-bootstrap/Navbar'
-import Nav from 'react-bootstrap/Nav'
-import Container from 'react-bootstrap/Container'
+import {Navbar, Nav, Container} from 'react-bootstrap'
 import './Home.css';
 
 var words = ['Minnesota', 'home', 'shells', 'sales job', 'towards', 'away', 'burns', 'glasses', 'NBA tickets', 'sandals', 'galaxies']
