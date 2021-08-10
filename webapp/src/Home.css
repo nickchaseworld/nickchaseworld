@@ -1,11 +1,47 @@
-.container {
+@import url('https://fonts.googleapis.com/css2?family=Spartan:wght@900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@800&family=Spartan:wght@900&display=swap');
+
+* {
+    font-family: 'Spartan', sans-serif;
+    font-weight: 900 !important;
+}
+
+.contentContainer {
+    width: auto;
+    max-width: 1920px;
+    margin: 0 auto;
+}
+
+.container2 {
     margin: 0 auto;
     display: flex;
     justify-content: center;
     width: 80%;
     height: 100%;
     flex-direction: column;
-    background-color: red; 
+}
+
+.navBarContainer {
+    width: auto !important; 
+    
+}
+
+h1 {
+    font-size: 96px !important;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 900 !important;
+}
+
+.nav-link {
+    font-size: 25px;
+}
+
+.navbar navbar-expand navbar-light bg-light {
+    background-color: white;
+}
+
+.container {
+    margin-top: 40px;
 }
 
 
@@ -15,6 +51,38 @@
 
 @media only screen and (min-width: 0px) and (max-width: 800px)
 {
-    .me {}
+    html {
+        width: 100%;
+    }
+
+    h1 {
+        font-size: 45px !important;
+    }
+    .contentContainer {
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+        width: 80%;
+        height: 100%;
+        flex-direction: column;
+    }
+
+    .container {
+        width: inherit !important;
+        overflow: hidden !important;
+    }
+    
+    .nav-link {
+        padding: 0px !important;
+        content: "\a";
+        font-size: 18px;
+        text-align: center;
+        line-height: 1 !important;
+    }
+
+    .navbar-nav {
+        flex-direction: column !important;
+    }
+
 }
 
