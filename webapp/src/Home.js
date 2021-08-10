@@ -36,7 +36,7 @@ class Home extends React.Component {
        
        <Navbar bg="white" variant="light">
         <Container className="navBarContainer">
-        <Nav onClick={e => e.preventDefault()}>
+        <Nav onClick={e => e.preventDefault()} defaultActiveKey="HOME">
         &emsp;&emsp;<Nav.Link href="HOME" onClick={e => this.pageSelect(e)} >HOME</Nav.Link>&emsp;&emsp;
         &emsp;&emsp;<Nav.Link href="VIDEOS" onClick={e => this.pageSelect(e)}>VIDEOS</Nav.Link>&emsp;&emsp;
         &emsp;&emsp;<Nav.Link href="INTAKE" onClick={e => this.pageSelect(e)}>INTAKE</Nav.Link>&emsp;&emsp;
@@ -45,8 +45,7 @@ class Home extends React.Component {
         </Nav>
         </Container>
       </Navbar>
-      {this.state.page}
-        {this.state.page == "HOME" && <div><h1>HOME PAGE</h1></div>}
+        {this.state.page == "HOME" && <div></div>}
         {this.state.page == "VIDEOS" && <div><h1>VIDEOS PAGE</h1></div>}
         {this.state.page == "INTAKE" && <div><h1>INTAKE PAGE</h1></div>}
         {this.state.page == "STREAM" && <div><h1>STREAM PAGE</h1></div>}

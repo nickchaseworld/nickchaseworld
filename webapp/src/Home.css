@@ -68,6 +68,7 @@ h1 {
     }
 
     .container {
+        margin-top: 0;
         width: inherit !important;
         overflow: hidden !important;
     }
