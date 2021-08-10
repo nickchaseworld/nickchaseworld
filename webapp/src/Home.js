@@ -46,7 +46,7 @@ class Home extends React.Component {
         &emsp;&emsp;<Nav.Link href="READING" onClick={e => this.pageSelect(e)}>READING</Nav.Link>&emsp;&emsp;
         </Nav>
         </Container>
-      </Navbar>
+      </Navbar> {/**/}}
         {this.state.page == "HOME" && <div style={{margin: '0 auto'}}>
           <br></br>
           <center> <p className="subheader">fled the scene</p>
@@ -56,7 +56,7 @@ class Home extends React.Component {
           <br></br>
           {words.map(word => (<div>
                 <p className="subheader">{word}</p>   
-              </div>) )}
+              </div>) )} 
           <br></br>
           <br></br>
           </center>
