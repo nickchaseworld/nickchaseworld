@@ -4,6 +4,8 @@ import Nav from 'react-bootstrap/Nav'
 import Container from 'react-bootstrap/Container'
 import './Home.css';
 
+var words = ['Minnesota', 'home', 'shells', 'sales job', 'towards', 'away', 'burns', 'glasses', 'NBA tickets', 'sandals', 'galaxies']
+
 class Home extends React.Component { 
 
   //the states of emotion and source will be set to null initially until the user had filled out the form.
@@ -45,7 +47,23 @@ class Home extends React.Component {
         </Nav>
         </Container>
       </Navbar>
-        {this.state.page == "HOME" && <div></div>}
+        {this.state.page == "HOME" && <div style={{margin: '0 auto'}}>
+          <br></br>
+          <center> <p className="subheader">fled the scene</p>
+          <p className="subheader">love cuts like ______</p>
+          <img src="https://drive.google.com/uc?export=view&id=1ocuFnKiHPoAeAN7KOhCXYtE9oa94-9uk"></img>
+          <br></br>
+          <br></br>
+          {words.map(word => (<div>
+                <p className="subheader">{word}</p>   
+              </div>) )}
+          <br></br>
+          <br></br>
+          </center>
+          
+          
+          
+          </div>}
         {this.state.page == "VIDEOS" && <div><h1>VIDEOS PAGE</h1></div>}
         {this.state.page == "INTAKE" && <div><h1>INTAKE PAGE</h1></div>}
         {this.state.page == "STREAM" && <div><h1>STREAM PAGE</h1></div>}
