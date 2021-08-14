@@ -79,7 +79,9 @@ class Home extends React.Component {
           </center>
           </div>}
         {this.state.page === "INTAKE" && <div><h1>INTAKE PAGE</h1></div>}
-        {this.state.page === "STREAM" && <div><h1>STREAM PAGE</h1></div>}
+        {this.state.page === "STREAM" && <div className="pageContainer">
+          {/*<iframe src="https://open.spotify.com/embed/artist/0L403rnpKcBVAwX9Kxmta5" width="100%" height="380" style={{height: '380 !important'}}frameBorder="0" allowtransparency="true" allow="encrypted-media"></iframe>*/}
+          </div>}
         {this.state.page === "READING" && <div><h1>READING PAGE</h1></div>}
         <center>
             <br></br>
@@ -91,6 +93,9 @@ class Home extends React.Component {
             <Clock format={'HH:mm:ss'} ticking={true} timezone={'US/Eastern'} />
             
             <h1 className="atl">ATLANTA</h1>
+            <br></br>
+            <br></br>
+            <br></br>
           </center>
       </div>
 
