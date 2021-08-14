@@ -46,8 +46,8 @@ class Home extends React.Component {
         </Nav>
         </Container>
       </Navbar> {/**/}
+      <br></br>
         {this.state.page === "HOME" && <div className="pageContainer">
-          <br></br>
           <center> <p className="subheader">fled the scene</p>
           <p className="subheader">love cuts like ______</p>
           <img src="https://drive.google.com/uc?export=view&id=1ocuFnKiHPoAeAN7KOhCXYtE9oa94-9uk" alt="nickchase"></img>
@@ -86,9 +86,8 @@ class Home extends React.Component {
           
           </div>}
         {this.state.page === "VIDEOS" && <div className="pageContainer">
-          <h1>VIDEOS PAGE</h1>
           <center>
-            <iframe src="https://www.youtube.com/embed/ZNXhjrj7byY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/uOfIyX7ow1c" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             <br></br>
             <br></br>
             <br></br>
