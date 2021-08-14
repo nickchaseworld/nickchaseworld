@@ -1,5 +1,6 @@
 import React from 'react';
 import {Navbar, Nav, Container} from 'react-bootstrap'
+import Clock from 'react-live-clock';
 import './Home.css';
 
 var words = ['Minnesota', 'home', 'shells', 'sales job', 'towards', 'away', 'burns', 'glasses', 'NBA tickets', 'sandals', 'galaxies']
@@ -57,7 +58,29 @@ class Home extends React.Component {
               </div>) )} 
           <br></br>
           <br></br>
+          <p className="subheader">favorite answer currently</p>
+          <br></br>
+          <p className="subheader">Iowa</p>
+          <br></br>
+          <br></br>
+          <br></br>
+          <br></br>
+          <br></br>
+          <br></br>
+          <br></br>
+          <br></br>
+          <Clock format={'dddd'} ticking={true} timezone={'US/Eastern'} className="dayOfWeek" /> 
+          <br></br>
+          <br></br>
+          
+          <Clock format={'HH:mm:ss'} ticking={true} timezone={'US/Eastern'} />
+          
+          <h1 className="atl">ATLANTA</h1>
           </center>
+          <br></br>
+          <br></br>
+          <br></br>
+
           
           
           

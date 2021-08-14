@@ -57,6 +57,24 @@ img {
     width: 80%;
 }
 
+.dayOfWeek {
+    font-size: 40px !important;
+
+}
+
+time {
+    font-size: 80px;
+    text-transform: uppercase;
+    margin: 0px;
+    padding: 0px;
+}
+
+.atl {
+    font-size: 80px !important;
+    margin: 0px !important;
+    padding: 0px !important;
+    
+}
 
 @media only screen and (min-width: 0px) and (max-width: 800px)
 {
@@ -100,6 +118,25 @@ img {
 
     .subheader {
         font-size: 18px;
+    }
+
+    .dayOfWeek {
+        font-size: 20px !important;
+    
+    }
+    
+    time {
+        font-size: 40px;
+        text-transform: uppercase;
+        margin: 0px;
+        padding: 0px;
+    }
+    
+    .atl {
+        font-size: 42px !important;
+        margin: 0px !important;
+        padding: 0px !important;
+        
     }
 
 }
