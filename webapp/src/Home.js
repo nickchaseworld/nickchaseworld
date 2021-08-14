@@ -61,21 +61,6 @@ class Home extends React.Component {
           <p className="subheader">favorite answer currently</p>
           <br></br>
           <p className="subheader">Iowa</p>
-          <br></br>
-          <br></br>
-          <br></br>
-          <br></br>
-          <br></br>
-          <br></br>
-          <br></br>
-          <br></br>
-          <Clock format={'dddd'} ticking={true} timezone={'US/Eastern'} className="dayOfWeek" /> 
-          <br></br>
-          <br></br>
-          
-          <Clock format={'HH:mm:ss'} ticking={true} timezone={'US/Eastern'} />
-          
-          <h1 className="atl">ATLANTA</h1>
           </center>
           <br></br>
           <br></br>
@@ -96,6 +81,17 @@ class Home extends React.Component {
         {this.state.page === "INTAKE" && <div><h1>INTAKE PAGE</h1></div>}
         {this.state.page === "STREAM" && <div><h1>STREAM PAGE</h1></div>}
         {this.state.page === "READING" && <div><h1>READING PAGE</h1></div>}
+        <center>
+            <br></br>
+            <br></br>
+            <Clock format={'dddd'} ticking={true} timezone={'US/Eastern'} className="dayOfWeek" /> 
+            <br></br>
+            <br></br>
+            
+            <Clock format={'HH:mm:ss'} ticking={true} timezone={'US/Eastern'} />
+            
+            <h1 className="atl">ATLANTA</h1>
+          </center>
       </div>
 
       )
