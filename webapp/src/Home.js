@@ -94,7 +94,7 @@ class Home extends React.Component {
             </DropdownButton>
             <br></br>
             {this.state.musicProvider === "Spotify" && <div><iframe src="https://open.spotify.com/embed/artist/0L403rnpKcBVAwX9Kxmta5" className="spotify" frameBorder="0" allowtransparency="true" allow="encrypted-media"></iframe></div>}
-            {this.state.musicProvider === "Apple Music" && <div></div>}
+            {this.state.musicProvider === "Apple Music" && <div><iframe sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" src="https://embed.music.apple.com/us/album/semesterly/1554434311"></iframe></div>}
             {this.state.musicProvider === "Soundcloud" && <div><iframe src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/894891235&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe><div style={{fontSize: '10px', color: '#cccccc', lineBreak: 'anywhere', wordBreak: 'normal', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis', fontFamily: 'Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif', fontWeight: '100'}}><a href="https://soundcloud.com/itsnickchase" title="Nick Chase" target="_blank" style={{color: '#cccccc', textDecoration: 'none'}}>Nick Chase</a> · <a href="https://soundcloud.com/itsnickchase/ive-been-down-but-im-mostly-up" title="i&#x27;ve been down, but i&#x27;m mostly up" target="_blank" style={{color: '#cccccc', textDecoration: 'none'}}>i&#x27;ve been down, but i&#x27;m mostly up</a></div></div>}
           </center>
           </div>}
