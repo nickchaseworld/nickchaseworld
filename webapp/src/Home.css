@@ -41,6 +41,7 @@ h1 {
     background-color: white;
 }
 
+
 .container {
     margin-top: 40px;
 }
@@ -76,9 +77,21 @@ time {
     
 }
 
+.btn-primary {
+    color: black !important;
+    background-color: white !important;
+    border-color: black !important;
+    border-width: thin !important;
+}
+
 iframe {
-    width: 100%;
+    width: 90%;
     height: 600px; /*252.5*/
+}
+
+.spotify {
+    width: 90%;
+    height: 390px;
 }
 
 .pageContainer {
