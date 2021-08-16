@@ -11,9 +11,10 @@ var fiftyTest = ['1A0SVChLrRPGazPL3TtL4i0vhLmjgEunx', '17ZiHAQFiU1gKckGmWe9H7o8Z
 var hundredTest = ['1Jv7cA46280QCjyCl9YstInPdCN7kTol0']
 
 var unfilteredArray = ['1HuPcbunfGJD7xJxpKA9eW9_Va5w0piHd', '1fk1Rk7tp4I790RI6diBmFXUGiEwMsBtu', '1IZGSAvkU99XvZeLm9GaS1ABoz5dEMR0z', '1A0SVChLrRPGazPL3TtL4i0vhLmjgEunx', '17ZiHAQFiU1gKckGmWe9H7o8ZQizfaxG8', '1Jv7cA46280QCjyCl9YstInPdCN7kTol0', '1q1536MDJqZPNPzUVDdEqbLV_XHjlLQVj', '1hRreHylJ7oLyHABfyrKWERHzuQqpXD_J']
+var filteredArray = []
 
 function getRandomInt(max) {
-  return Math.floor(Math.random() * max);
+  return Math.floor(Math.random() * 3) + 1;
 }
 
 class Home extends React.Component { 
@@ -30,7 +31,20 @@ class Home extends React.Component {
 
   componentDidMount()
   {
-    
+    //slice notation includes start, does not include end, [x, y)
+    while(unfilteredArray.length > 2)
+    {
+      var groupingIndex = getRandomInt(3)
+      
+      filteredArray.push(unfilteredArray.slice(0, groupingIndex))
+      unfilteredArray = unfilteredArray.slice(groupingIndex)
+      
+    }
+    if(unfilteredArray.length > 0)
+    {
+      filteredArray.push(unfilteredArray)
+    }
+    console.log(filteredArray)
   }
 
   pageSelect = (requestedPage) => {
@@ -43,7 +57,6 @@ class Home extends React.Component {
   
   render()
   {  
-    console.log(getRandomInt(3))
     
 
     return (   
@@ -111,6 +124,11 @@ class Home extends React.Component {
         
         
         <div className="row">
+        {filteredArray.map(group => (<div>
+                
+                
+                
+          </div>) )}
           {/*intakeArray.map(item => (<div className="column">
                 
                 
@@ -120,7 +138,7 @@ class Home extends React.Component {
                 
           </div>) )*/}
 
-          {thirtyThreeTest.map(item => (<div className="column33">
+          {/*{thirtyThreeTest.map(item => (<div className="column33">
                 
                 
                <center> <img src={"https://drive.google.com/uc?export=view&id=" + item}></img></center>
@@ -142,7 +160,7 @@ class Home extends React.Component {
           <center> <img src={"https://drive.google.com/uc?export=view&id=" + item}></img></center>
                 <br></br>
                 
-          </div>) )}
+        </div>) )}*/}
           
             </div>
             
