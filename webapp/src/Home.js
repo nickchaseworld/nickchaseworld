@@ -10,6 +10,12 @@ var thirtyThreeTest = ['1HuPcbunfGJD7xJxpKA9eW9_Va5w0piHd', '1fk1Rk7tp4I790RI6di
 var fiftyTest = ['1A0SVChLrRPGazPL3TtL4i0vhLmjgEunx', '17ZiHAQFiU1gKckGmWe9H7o8ZQizfaxG8']
 var hundredTest = ['1Jv7cA46280QCjyCl9YstInPdCN7kTol0']
 
+var unfilteredArray = ['1HuPcbunfGJD7xJxpKA9eW9_Va5w0piHd', '1fk1Rk7tp4I790RI6diBmFXUGiEwMsBtu', '1IZGSAvkU99XvZeLm9GaS1ABoz5dEMR0z', '1A0SVChLrRPGazPL3TtL4i0vhLmjgEunx', '17ZiHAQFiU1gKckGmWe9H7o8ZQizfaxG8', '1Jv7cA46280QCjyCl9YstInPdCN7kTol0', '1q1536MDJqZPNPzUVDdEqbLV_XHjlLQVj', '1hRreHylJ7oLyHABfyrKWERHzuQqpXD_J']
+
+function getRandomInt(max) {
+  return Math.floor(Math.random() * max);
+}
+
 class Home extends React.Component { 
 
   //the states of emotion and source will be set to null initially until the user had filled out the form.
@@ -37,6 +43,8 @@ class Home extends React.Component {
   
   render()
   {  
+    console.log(getRandomInt(3))
+    
 
     return (   
       <div className="contentContainer"> {/* DO NOT REMOVE THIS DIV COMPONENT*/}
