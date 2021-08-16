@@ -6,6 +6,10 @@ import './Home.css';
 
 var words = ['Minnesota', 'home', 'shells', 'sales job', 'towards', 'away', 'burns', 'glasses', 'NBA tickets', 'sandals', 'galaxies']
 var intakeArray = ['1HuPcbunfGJD7xJxpKA9eW9_Va5w0piHd', '1fk1Rk7tp4I790RI6diBmFXUGiEwMsBtu', '1IZGSAvkU99XvZeLm9GaS1ABoz5dEMR0z', '1A0SVChLrRPGazPL3TtL4i0vhLmjgEunx', '17ZiHAQFiU1gKckGmWe9H7o8ZQizfaxG8', '1Jv7cA46280QCjyCl9YstInPdCN7kTol0', '1q1536MDJqZPNPzUVDdEqbLV_XHjlLQVj', '1hRreHylJ7oLyHABfyrKWERHzuQqpXD_J']
+var thirtyThreeTest = ['1HuPcbunfGJD7xJxpKA9eW9_Va5w0piHd', '1fk1Rk7tp4I790RI6diBmFXUGiEwMsBtu', '1IZGSAvkU99XvZeLm9GaS1ABoz5dEMR0z']
+var fiftyTest = ['1A0SVChLrRPGazPL3TtL4i0vhLmjgEunx', '17ZiHAQFiU1gKckGmWe9H7o8ZQizfaxG8']
+var hundredTest = ['1Jv7cA46280QCjyCl9YstInPdCN7kTol0']
+
 class Home extends React.Component { 
 
   //the states of emotion and source will be set to null initially until the user had filled out the form.
@@ -99,14 +103,42 @@ class Home extends React.Component {
         
         
         <div className="row">
-          {intakeArray.map(item => (<div className="column">
+          {/*intakeArray.map(item => (<div className="column">
                 
                 
                 <img src={"https://drive.google.com/uc?export=view&id=" + item} className="array"></img>
                 <br></br>
                 <br></br>
                 
-              </div>) )}
+          </div>) )*/}
+
+          {thirtyThreeTest.map(item => (<div className="column33">
+                
+                
+               <center> <img src={"https://drive.google.com/uc?export=view&id=" + item}></img></center>
+                <br></br>
+                <br></br>
+                
+          </div>) )}
+
+          {fiftyTest.map(item => (<div className="column50">
+                
+                
+          <center> <img src={"https://drive.google.com/uc?export=view&id=" + item}></img></center>
+                <br></br>
+                <br></br>
+                
+          </div>) )}
+
+          {hundredTest.map(item => (<div className="column100">
+                
+                
+          <center> <img src={"https://drive.google.com/uc?export=view&id=" + item}></img></center>
+                <br></br>
+                <br></br>
+                
+          </div>) )}
+          
             </div>
             
 
