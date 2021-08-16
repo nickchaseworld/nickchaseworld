@@ -101,8 +101,11 @@ iframe {
 }
 
 .row {
+    margin: 0 auto !important;
+    width: 90%;
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
     padding: 0 4px;
   }
   

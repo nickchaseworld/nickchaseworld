@@ -96,8 +96,9 @@ class Home extends React.Component {
           </center>
           </div>}
         {this.state.page === "INTAKE" && <div className="pageContainer">
-          
-        <div class="row">
+        
+        
+        <div className="row">
           {intakeArray.map(item => (<div className="column">
                 
                 
@@ -107,6 +108,7 @@ class Home extends React.Component {
                 
               </div>) )}
             </div>
+            
 
           </div>}
 
