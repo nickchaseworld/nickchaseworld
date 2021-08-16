@@ -117,7 +117,6 @@ class Home extends React.Component {
                 
                <center> <img src={"https://drive.google.com/uc?export=view&id=" + item}></img></center>
                 <br></br>
-                <br></br>
                 
           </div>) )}
 
@@ -126,7 +125,6 @@ class Home extends React.Component {
                 
           <center> <img src={"https://drive.google.com/uc?export=view&id=" + item}></img></center>
                 <br></br>
-                <br></br>
                 
           </div>) )}
 
@@ -134,7 +132,6 @@ class Home extends React.Component {
                 
                 
           <center> <img src={"https://drive.google.com/uc?export=view&id=" + item}></img></center>
-                <br></br>
                 <br></br>
                 
           </div>) )}
