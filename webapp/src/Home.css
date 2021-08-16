@@ -64,14 +64,14 @@ img {
 }
 
 time {
-    font-size: 80px;
+    font-size: 70px;
     text-transform: uppercase;
     margin: 0px;
     padding: 0px;
 }
 
 .atl {
-    font-size: 80px !important;
+    font-size: 40px !important;
     margin: 0px !important;
     padding: 0px !important;
     
@@ -154,14 +154,14 @@ iframe {
     }
     
     time {
-        font-size: 40px;
+        font-size: 38px;
         text-transform: uppercase;
         margin: 0px;
         padding: 0px;
     }
     
     .atl {
-        font-size: 42px !important;
+        font-size: 20px !important;
         margin: 0px !important;
         padding: 0px !important;
         

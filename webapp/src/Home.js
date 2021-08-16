@@ -71,6 +71,17 @@ class Home extends React.Component {
           <br></br>
           <br></br>
           <br></br>
+          <center>
+            <br></br>
+            <br></br>
+            <Clock format={'dddd'} ticking={true} timezone={'US/Eastern'} className="dayOfWeek" /> 
+            <br></br>
+            
+            
+            <Clock format={'hh:mm a'} ticking={true} timezone={'US/Eastern'} />
+            
+            <h1 className="atl">ATLANTA</h1>
+          </center>
 
           
           
@@ -87,32 +98,30 @@ class Home extends React.Component {
         {this.state.page === "INTAKE" && <div><h1>INTAKE PAGE</h1></div>}
         {this.state.page === "STREAM" && <div className="pageContainer">
           <center>
-            <DropdownButton size="md" id="dropdown-basic-button" title={this.state.musicProvider} onClick={e => e.preventDefault()} style={{margin: '0 auto', marginTop: '10px'}}>
+            {/*<DropdownButton size="md" id="dropdown-basic-button" title={this.state.musicProvider} onClick={e => e.preventDefault()} style={{margin: '0 auto', marginTop: '10px'}}>
                 <Dropdown.Item onClick={e => this.musicProviderSelect(e)}>Spotify</Dropdown.Item>
                 <Dropdown.Item onClick={e => this.musicProviderSelect(e)}>Apple Music</Dropdown.Item>
                 <Dropdown.Item onClick={e => this.musicProviderSelect(e)}>Soundcloud</Dropdown.Item>
-            </DropdownButton>
-            <br></br>
-            {this.state.musicProvider === "Spotify" && <div><iframe src="https://open.spotify.com/embed/artist/0L403rnpKcBVAwX9Kxmta5" className="streaming" frameBorder="0" allowtransparency="true" allow="encrypted-media"></iframe></div>}
-            {this.state.musicProvider === "Apple Music" && <div><iframe className="streaming" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" src="https://embed.music.apple.com/us/album/semesterly/1554434311"></iframe></div>}
-            {this.state.musicProvider === "Soundcloud" && <div><iframe className="streaming" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/894891235&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe><div style={{fontSize: '10px', color: '#cccccc', lineBreak: 'anywhere', wordBreak: 'normal', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis', fontFamily: 'Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif', fontWeight: '100'}}><a href="https://soundcloud.com/itsnickchase" title="Nick Chase" target="_blank" style={{color: '#cccccc', textDecoration: 'none'}}>Nick Chase</a> · <a href="https://soundcloud.com/itsnickchase/ive-been-down-but-im-mostly-up" title="i&#x27;ve been down, but i&#x27;m mostly up" target="_blank" style={{color: '#cccccc', textDecoration: 'none'}}>i&#x27;ve been down, but i&#x27;m mostly up</a></div></div>}
+          </DropdownButton>
+          <br></br>
+          */}
+            {this.state.musicProvider === "Spotify" && <div>
+              <iframe src="https://open.spotify.com/embed/artist/0L403rnpKcBVAwX9Kxmta5" className="streaming" frameBorder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+              <br></br>
+              <br></br>
+              <iframe className="streaming" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" src="https://embed.music.apple.com/us/album/semesterly/1554434311"></iframe>
+              <br></br>
+              <br></br>
+              <iframe className="streaming" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/894891235&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe><div style={{fontSize: '10px', color: '#cccccc', lineBreak: 'anywhere', wordBreak: 'normal', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis', fontFamily: 'Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif', fontWeight: '100'}}><a href="https://soundcloud.com/itsnickchase" title="Nick Chase" target="_blank" style={{color: '#cccccc', textDecoration: 'none'}}>Nick Chase</a> · <a href="https://soundcloud.com/itsnickchase/ive-been-down-but-im-mostly-up" title="i&#x27;ve been down, but i&#x27;m mostly up" target="_blank" style={{color: '#cccccc', textDecoration: 'none'}}>i&#x27;ve been down, but i&#x27;m mostly up</a></div>
+              </div>}
+            {this.state.musicProvider === "Apple Music" && <div></div>}
+            {this.state.musicProvider === "Soundcloud" && <div></div>}
           </center>
           </div>}
         {this.state.page === "READING" && <div><h1>READING PAGE</h1></div>}
-        <center>
+        <br></br>
             <br></br>
             <br></br>
-            <Clock format={'dddd'} ticking={true} timezone={'US/Eastern'} className="dayOfWeek" /> 
-            <br></br>
-            <br></br>
-            
-            <Clock format={'HH:mm:ss'} ticking={true} timezone={'US/Eastern'} />
-            
-            <h1 className="atl">ATLANTA</h1>
-            <br></br>
-            <br></br>
-            <br></br>
-          </center>
       </div>
 
       )
