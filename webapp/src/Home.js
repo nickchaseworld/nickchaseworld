@@ -141,7 +141,7 @@ class Home extends React.Component {
             item[0] === '1' ? 
               <div className="column1">
                 <center>
-                  <img src={"https://drive.google.com/uc?export=view&id=" + item.slice(1)} className="array"></img>
+                  <img src={"https://drive.google.com/uc?export=view&id=" + item.slice(1)} style={{width: '100%'}}></img>
                   <br></br>
                   <br></br>
                 </center>
@@ -149,7 +149,7 @@ class Home extends React.Component {
             : item[0] === '2' ? 
                 <div className="column2">
                   <center>
-                    <img src={"https://drive.google.com/uc?export=view&id=" + item.slice(1)} className="array"></img>
+                    <img src={"https://drive.google.com/uc?export=view&id=" + item.slice(1)} style={{width: '100%'}}></img>
                     <br></br>
                   <br></br>
                   </center>
@@ -157,7 +157,7 @@ class Home extends React.Component {
             : item[0] === '3' ? 
               <div className="column3">
                 <center>
-                  <img src={"https://drive.google.com/uc?export=view&id=" + item.slice(1)} className="array"></img>
+                  <img src={"https://drive.google.com/uc?export=view&id=" + item.slice(1)} style={{width: '100%'}}></img>
                   <br></br>
                   <br></br>
                   </center>
