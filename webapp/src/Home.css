@@ -148,6 +148,15 @@ iframe {
       height: 600px;
       margin: 0 auto;
   }
+
+  .current {
+      font-size: 30px !important;
+      margin: 0 auto;
+  }
+
+  .bookDescription {
+      font-size: 20px;
+  }
   
 
 @media only screen and (min-width: 0px) and (max-width: 800px)
@@ -159,6 +168,15 @@ iframe {
     h1 {
         font-size: 45px !important;
     }
+
+    .current {
+        font-size: 30px !important;
+    }
+
+    .bookDescription {
+        font-size: 20px;
+    }
+
     .contentContainer {
         margin: 0 auto;
         display: flex;

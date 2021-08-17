@@ -213,10 +213,10 @@ class Home extends React.Component {
         <Slider {...settings}>
       
           {pastReading.map((bookCover, index) => <div className="bookSlide">
-
+            {index === 0 ? <center><p className="current">currently reading:</p></center>:<center><p className="current" style={{visibility: 'hidden'}}>current:</p></center>}
             <img src={"https://drive.google.com/uc?export=view&id=" + bookCover}></img>
                   <br></br>
-                  <br></br>
+                  <center><p className="bookDescription">"some sort of description"</p></center>
           </div>)}
         </Slider>
           </div>}
