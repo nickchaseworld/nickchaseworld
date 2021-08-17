@@ -216,7 +216,7 @@ class Home extends React.Component {
             {index === 0 ? <center><p className="current">currently reading:</p></center>:<center><p className="current" style={{visibility: 'hidden'}}>current:</p></center>}
             <img src={"https://drive.google.com/uc?export=view&id=" + bookCover}></img>
                   <br></br>
-                  <center><p className="bookDescription">"some sort of description"</p></center>
+                  <center><p className="bookDescription">"{index}: some sort of description"</p></center>
           </div>)}
         </Slider>
           </div>}
