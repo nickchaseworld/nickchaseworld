@@ -137,7 +137,17 @@ iframe {
     padding: 0 4px;
     width: 100% !important;
   }
+
+  .slick-slider {
+      width: auto;
+      margin: 0 auto;
+  }
   
+  .bookSlide img {
+      width: auto;
+      height: 600px;
+      margin: 0 auto;
+  }
   
 
 @media only screen and (min-width: 0px) and (max-width: 800px)
@@ -210,6 +220,17 @@ iframe {
     iframe {
         width: 90%;
         height: 250px; /*252.5*/
+    }
+
+    .slick-slider {
+        width: auto;
+        margin: 0 auto;
+    }
+    
+    .bookSlide img {
+        width: auto;
+        height: 400px;
+        margin: 0 auto;
     }
 
 }

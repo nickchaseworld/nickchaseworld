@@ -1,6 +1,9 @@
 import React from 'react';
 import {Navbar, Nav, Container, DropdownButton, Dropdown} from 'react-bootstrap'
 import Clock from 'react-live-clock';
+import Slider from 'react-slick'
+import 'slick-carousel/slick/slick-theme.css';
+import 'slick-carousel/slick/slick.css';
 
 import './Home.css';
 
@@ -13,6 +16,18 @@ var hundredTest = ['1Jv7cA46280QCjyCl9YstInPdCN7kTol0']
 var unfilteredArray = ['1HuPcbunfGJD7xJxpKA9eW9_Va5w0piHd', '1fk1Rk7tp4I790RI6diBmFXUGiEwMsBtu', '1IZGSAvkU99XvZeLm9GaS1ABoz5dEMR0z', '1A0SVChLrRPGazPL3TtL4i0vhLmjgEunx', '17ZiHAQFiU1gKckGmWe9H7o8ZQizfaxG8', '1Jv7cA46280QCjyCl9YstInPdCN7kTol0', '1q1536MDJqZPNPzUVDdEqbLV_XHjlLQVj', '1hRreHylJ7oLyHABfyrKWERHzuQqpXD_J']
 var filteredArray = []
 var renderIntake = []
+var currentlyReading = []
+var pastReading = ['1nHBhWEAnYvVeHBIBr-miXWh-I_x_pdsh', '1dDdTgmj9EmwoI_q3lfgposju7H51Qpdl', '1aiNr-4bKMOvN7sK61RRcq3GAWRLGL-Rj', '1JlA1eoWlWcRkOqumG2uo9taxtatkJ3bQ']
+
+var settings = {
+  dots: true,
+  infinite: true,
+  speed: 300,
+  autoplay: true,
+  autoplaySpeed: 5000,
+  slidesToShow: 1,
+  slidesToScroll: 1
+};
 
 function getRandomInt(max) {
   return Math.floor(Math.random() * 3) + 1;
@@ -193,7 +208,19 @@ class Home extends React.Component {
         {this.state.musicProvider === "Soundcloud" && <div></div>}*/}
           </center>
           </div>}
-        {this.state.page === "READING" && <div><h1>READING PAGE</h1></div>}
+        {this.state.page === "READING" && <div className="pageContainer">
+          
+        <Slider {...settings}>
+      
+          {pastReading.map((bookCover, index) => <div className="bookSlide">
+
+            <img src={"https://drive.google.com/uc?export=view&id=" + bookCover}></img>
+                  <br></br>
+                  <br></br>
+          </div>)}
+        </Slider>
+          </div>}
+
         <br></br>
             <br></br>
             <br></br>
