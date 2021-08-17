@@ -12,6 +12,7 @@ var hundredTest = ['1Jv7cA46280QCjyCl9YstInPdCN7kTol0']
 
 var unfilteredArray = ['1HuPcbunfGJD7xJxpKA9eW9_Va5w0piHd', '1fk1Rk7tp4I790RI6diBmFXUGiEwMsBtu', '1IZGSAvkU99XvZeLm9GaS1ABoz5dEMR0z', '1A0SVChLrRPGazPL3TtL4i0vhLmjgEunx', '17ZiHAQFiU1gKckGmWe9H7o8ZQizfaxG8', '1Jv7cA46280QCjyCl9YstInPdCN7kTol0', '1q1536MDJqZPNPzUVDdEqbLV_XHjlLQVj', '1hRreHylJ7oLyHABfyrKWERHzuQqpXD_J']
 var filteredArray = []
+var renderIntake = []
 
 function getRandomInt(max) {
   return Math.floor(Math.random() * 3) + 1;
@@ -45,6 +46,18 @@ class Home extends React.Component {
       filteredArray.push(unfilteredArray)
     }
     console.log(filteredArray)
+
+    renderIntake = []
+
+    for(var i = 0; i < filteredArray.length; i++)
+    {
+      for(var j = 0; j < filteredArray[i].length; j++)
+      {
+        
+        console.log(filteredArray[i].length)
+        renderIntake.push(filteredArray[i].length + filteredArray[i][j])
+      }
+    }
   }
 
   pageSelect = (requestedPage) => {
@@ -57,8 +70,6 @@ class Home extends React.Component {
   
   render()
   {  
-    
-
     return (   
       <div className="contentContainer"> {/* DO NOT REMOVE THIS DIV COMPONENT*/}
       <br></br>
@@ -124,44 +135,34 @@ class Home extends React.Component {
         
         
         <div className="row">
-        {filteredArray.map(group => (<div>
-                
-                
-                
-          </div>) )}
-          {/*intakeArray.map(item => (<div className="column">
-                
-                
-                <img src={"https://drive.google.com/uc?export=view&id=" + item} className="array"></img>
-                <br></br>
-                <br></br>
-                
-          </div>) )*/}
 
-          {/*{thirtyThreeTest.map(item => (<div className="column33">
-                
-                
-               <center> <img src={"https://drive.google.com/uc?export=view&id=" + item}></img></center>
-                <br></br>
-                
-          </div>) )}
-
-          {fiftyTest.map(item => (<div className="column50">
-                
-                
-          <center> <img src={"https://drive.google.com/uc?export=view&id=" + item}></img></center>
-                <br></br>
-                
-          </div>) )}
-
-          {hundredTest.map(item => (<div className="column100">
-                
-                
-          <center> <img src={"https://drive.google.com/uc?export=view&id=" + item}></img></center>
-                <br></br>
-                
-        </div>) )}*/}
-          
+          {renderIntake.map(item => (
+            
+            item[0] === '1' ? 
+              <div className="column1">
+                <center>
+                  <img src={"https://drive.google.com/uc?export=view&id=" + item.slice(1)} className="array"></img>
+                  <br></br>
+                  <br></br>
+                </center>
+              </div> 
+            : item[0] === '2' ? 
+                <div className="column2">
+                  <center>
+                    <img src={"https://drive.google.com/uc?export=view&id=" + item.slice(1)} className="array"></img>
+                    <br></br>
+                  <br></br>
+                  </center>
+                </div> 
+            : item[0] === '3' ? 
+              <div className="column3">
+                <center>
+                  <img src={"https://drive.google.com/uc?export=view&id=" + item.slice(1)} className="array"></img>
+                  <br></br>
+                  <br></br>
+                  </center>
+              </div> 
+            : <div><h1>error</h1></div>)  )}
             </div>
             
 
