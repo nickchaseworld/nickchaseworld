@@ -1,5 +1,6 @@
 import React from 'react';
 import {Navbar, Nav, Container, DropdownButton, Dropdown} from 'react-bootstrap'
+import { GoogleSpreadsheet } from "google-spreadsheet";
 import Clock from 'react-live-clock';
 import Slider from 'react-slick'
 import 'slick-carousel/slick/slick-theme.css';
@@ -29,6 +30,31 @@ var settings = {
   slidesToScroll: 1
 };
 
+const SPREADSHEET_ID = "1HWPDbItdCiM973f9z3nc3HuTeV0gaB6UwZp2o8lgzOU";
+const SHEET_ID = "0";
+const CLIENT_EMAIL = "admin-196@nickchaseworld.iam.gserviceaccount.com";
+const PRIVATE_KEY = "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDCsNJUwRp0zL29\nN5aX0u0pOXGUiJPxZplVw5+UdAQ+J/UFz4sWOXe4vU6GIZ1+7hhkHg8l18yGwYae\n4xm3zXy5EgO/ZnqXSe02Faq/v4HSRKmwkX+TOipVhNZceFQ3/jgbvQJsHbBt58zc\nQCMr8z2ehdfpPvXu67FH1QlgYTfWS0onSi6d3xNBWnw9ES680P+Mx32Q8/ldWDpO\nxB4DptFbwQP3DqOomIViX3O4K5UHP3x0qSgXaeH3w5YPob6zizf75Rtw2kpZLvG8\nNkTmFXii5qfaeRSSKXFvfU8KIQlKwpK+tBUvYm5aSmQdCO9LHkk7yOcb2XNttDnT\n49PLJG5RAgMBAAECggEAPtbVvJdrU6G16Dnl+HETLUgmOdvvbG5CNaVjf4YGzI0X\nD94SNYUs+ErZ6n81F4AADWiKWRuTHzednPEOHv5LMGz5GrEYBnbNArTxnNxSKa0R\n3DTKKZoPifTLP6NzA3OhZoqWGpFmncLAo6Jr98aV7/GhY953gLtASEAhu6MFY7vv\nP8cCfFJbHON6Khd4jvm+FL5a9z99KkWTBQoo6DRs7mbmjvVtYS2jwW977kH4e/fr\nKVIt5qJtj5a1elXwNhXeFu8pn8IP9UvSFB3ECtslbBcEuGemhErWrQszuBMfHSx/\nwBKDppaZEgGVnSgn3lRYHNpjiyNquf5Pp0uTmCcBJQKBgQDgiLAgIyYNhwFkXjZM\nkW044caRiTV3JhIl5+k/tRrJIj6bxDc/HlnBZXfVO5JqUSNhtwd5voGxaEyefriM\nyS00LnXs4D9w5BVUFVeVk6R9Nz6aI2GXVAPAU5oOHpYpovaEpFh4LoApVFs0DZk6\nYEOg/oayr1YercaMHgzVpYpunwKBgQDd+XyoKZpZkdi5NidA1As18VlYTWAU3Mag\nd2WJhpnQpA9jISLJNjTg+NXigTj7GgWCBNZfLSEFDWwWFmgIWANd0mGPX0SAwVv+\nDz3zxvjdB18XUb4aQjvHZx36EeJueJ1p6ozyFNZp2vN9GDablNcqlz7JgXmEiWg3\n+MZdk6otDwKBgEaovURfy0nWgomjXFMcMNMFugdytnCYen2TTcPOqm9BZ5J9XSVv\n168Uz3E7Hgh3IDtP7fpSCV5bBEGcf1dOt/sD4/h3WX+dR1j+nmFj5Q/CouC+4adN\nuSB9Lq3i0j6oGgwD7BNmDs7yzQDEhsPoJ2AyuRDiPKfK6ACQNFnHjpjhAoGBAIqi\nPgO88ASO/V83fi6UAGhxUw6+TIrbFEa2KzlIUpqnTGDqGhK3AzGa1+J+OHtDVjtN\nECIjSmMgbeghmFnVtkyLj5j+tAcCPJUhKd0t4NISv4YN7H/z6+fu9B7xuoyqUg4L\ninnLH9q+/6GaVMi4neWgznsFnUJ0mx2SBzn8dqVrAoGAXQCThIjcSDAdFQ3EfJpH\nZSuiTpuW/PidHALg6e0GoGPfBZgo/yhNBV5IjBh0p4rrq6AOBymGZkzPft3IUDlb\nAM2DMyxR1NTS5w15USdAZZGdqmi72rt3J3RLvsOSeQAFPFPPsZLTLzWdMPMPdLwo\nD//YIsH1EYU+S1oYl8wgdcI=\n-----END PRIVATE KEY-----\n";
+
+const doc = new GoogleSpreadsheet(SPREADSHEET_ID);
+
+const appendSpreadsheet = async (row) => {
+  try {
+    await doc.useServiceAccountAuth({
+      client_email: CLIENT_EMAIL,
+      private_key: PRIVATE_KEY,
+    });
+    // loads document properties and worksheets
+    await doc.loadInfo();
+    
+    const sheet = doc.sheetsById[SHEET_ID];
+    const row = sheet.getRows();
+    console.log(row)
+    
+  } catch (e) {
+    console.error('Error: ', e);
+  }
+};
+
 function getRandomInt(max) {
   return Math.floor(Math.random() * 3) + 1;
 }
@@ -47,6 +73,10 @@ class Home extends React.Component {
 
   componentDidMount()
   {
+    const newRow = { Name: "new name", Value: "new value" };
+
+      appendSpreadsheet(newRow);
+      
     //slice notation includes start, does not include end, [x, y)
     while(unfilteredArray.length > 2)
     {
@@ -60,7 +90,6 @@ class Home extends React.Component {
     {
       filteredArray.push(unfilteredArray)
     }
-    console.log(filteredArray)
 
     renderIntake = []
 
@@ -68,8 +97,6 @@ class Home extends React.Component {
     {
       for(var j = 0; j < filteredArray[i].length; j++)
       {
-        
-        console.log(filteredArray[i].length)
         renderIntake.push(filteredArray[i].length + filteredArray[i][j])
       }
     }
@@ -95,10 +122,10 @@ class Home extends React.Component {
        <Navbar bg="white" variant="light">
         <Container className="navBarContainer">
         <Nav onClick={e => e.preventDefault()} defaultActiveKey="HOME">
-        &emsp;&emsp;<Nav.Link href="HOME" onClick={e => this.pageSelect(e)} >HOME</Nav.Link>&emsp;&emsp;
-        &emsp;&emsp;<Nav.Link href="VIDEOS" onClick={e => this.pageSelect(e)}>VIDEOS</Nav.Link>&emsp;&emsp;
-        &emsp;&emsp;<Nav.Link href="INTAKE" onClick={e => this.pageSelect(e)}>INTAKE</Nav.Link>&emsp;&emsp;
         &emsp;&emsp;<Nav.Link href="STREAM" onClick={e => this.pageSelect(e)}>STREAM</Nav.Link>&emsp;&emsp;
+        &emsp;&emsp;<Nav.Link href="VIDEOS" onClick={e => this.pageSelect(e)}>VIDEOS</Nav.Link>&emsp;&emsp;
+        &emsp;&emsp;<Nav.Link href="HOME" onClick={e => this.pageSelect(e)} >HOME</Nav.Link>&emsp;&emsp;
+        &emsp;&emsp;<Nav.Link href="INTAKE" onClick={e => this.pageSelect(e)}>INTAKE</Nav.Link>&emsp;&emsp;
         &emsp;&emsp;<Nav.Link href="READING" onClick={e => this.pageSelect(e)}>READING</Nav.Link>&emsp;&emsp;
         </Nav>
         </Container>
@@ -113,14 +140,7 @@ class Home extends React.Component {
           {words.map(word => (<div>
                 <p className="subheader">{word}</p>   
               </div>) )} 
-          <br></br>
-          <br></br>
-          <p className="subheader">favorite answer currently</p>
-          <br></br>
-          <p className="subheader">Iowa</p>
           </center>
-          <br></br>
-          <br></br>
           <br></br>
           <center>
             <br></br>
@@ -183,7 +203,6 @@ class Home extends React.Component {
 
           </div>}
 
-
         {this.state.page === "STREAM" && <div className="pageContainer">
           <center>
             {/*<DropdownButton size="md" id="dropdown-basic-button" title={this.state.musicProvider} onClick={e => e.preventDefault()} style={{margin: '0 auto', marginTop: '10px'}}>
@@ -192,15 +211,14 @@ class Home extends React.Component {
                 <Dropdown.Item onClick={e => this.musicProviderSelect(e)}>Soundcloud</Dropdown.Item>
           </DropdownButton>
           <br></br>
-
           */}
-          <iframe src="https://open.spotify.com/embed/artist/0L403rnpKcBVAwX9Kxmta5" className="streaming" frameBorder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+          <iframe src="https://open.spotify.com/embed/artist/0L403rnpKcBVAwX9Kxmta5?theme=0" className="streaming" frameBorder="0" allowtransparency="true" allow="encrypted-media"></iframe>
               <br></br>
               <br></br>
               <iframe className="streaming" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" src="https://embed.music.apple.com/us/album/semesterly/1554434311"></iframe>
               <br></br>
               <br></br>
-              <iframe className="streaming" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/894891235&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe><div style={{fontSize: '10px', color: '#cccccc', lineBreak: 'anywhere', wordBreak: 'normal', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis', fontFamily: 'Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif', fontWeight: '100'}}><a href="https://soundcloud.com/itsnickchase" title="Nick Chase" target="_blank" style={{color: '#cccccc', textDecoration: 'none'}}>Nick Chase</a> · <a href="https://soundcloud.com/itsnickchase/ive-been-down-but-im-mostly-up" title="i&#x27;ve been down, but i&#x27;m mostly up" target="_blank" style={{color: '#cccccc', textDecoration: 'none'}}>i&#x27;ve been down, but i&#x27;m mostly up</a></div>
+              <iframe className="streaming" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/894891235&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe><div style={{fontSize: '10px', color: '#cccccc', lineBreak: 'anywhere', wordBreak: 'normal', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis', fontFamily: 'Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif', fontWeight: '100'}}></div>
            {/*} {this.state.musicProvider === "Spotify" && <div>
               
               </div>}
@@ -213,7 +231,6 @@ class Home extends React.Component {
         <Slider {...settings}>
       
           {pastReading.map((bookCover, index) => <div className="bookSlide">
-            {index === 0 ? <center><p className="current">currently reading:</p></center>:<center><p className="current" style={{visibility: 'hidden'}}>current:</p></center>}
             <img src={"https://drive.google.com/uc?export=view&id=" + bookCover}></img>
                   <br></br>
                   <center><p className="bookDescription">"{index}: some sort of description"</p></center>
@@ -222,9 +239,11 @@ class Home extends React.Component {
           </div>}
 
         <br></br>
-            <br></br>
-            <br></br>
-      </div>
+        <br></br>
+        <br></br>
+        <center><p className="footer">nick chase</p></center>
+        <br></br>
+        </div>
 
       )
   }

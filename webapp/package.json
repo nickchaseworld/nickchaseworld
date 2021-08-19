@@ -41,6 +41,7 @@
     ]
   },
   "devDependencies": {
+    "google-spreadsheet": "^3.1.15",
     "react-router-dom": "^5.2.0",
     "react-slick": "^0.28.1",
     "slick-carousel": "^1.8.1"
