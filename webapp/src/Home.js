@@ -37,23 +37,7 @@ const PRIVATE_KEY = "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAA
 
 const doc = new GoogleSpreadsheet(SPREADSHEET_ID);
 
-const appendSpreadsheet = async (row) => {
-  try {
-    await doc.useServiceAccountAuth({
-      client_email: CLIENT_EMAIL,
-      private_key: PRIVATE_KEY,
-    });
-    // loads document properties and worksheets
-    await doc.loadInfo();
-    
-    const sheet = doc.sheetsById[SHEET_ID];
-    const row = sheet.getRows();
-    console.log(row)
-    
-  } catch (e) {
-    console.error('Error: ', e);
-  }
-};
+
 
 function getRandomInt(max) {
   return Math.floor(Math.random() * 3) + 1;
@@ -66,40 +50,97 @@ class Home extends React.Component {
     super();
     this.state = {
       page: "HOME",
-      musicProvider: "Spotify"
+      musicProvider: "Spotify",
+      words: [],
+      test: null,
+      images: []
     };
     
   } 
 
   componentDidMount()
   {
-    const newRow = { Name: "new name", Value: "new value" };
 
-      appendSpreadsheet(newRow);
-      
-    //slice notation includes start, does not include end, [x, y)
-    while(unfilteredArray.length > 2)
-    {
-      var groupingIndex = getRandomInt(3)
-      
-      filteredArray.push(unfilteredArray.slice(0, groupingIndex))
-      unfilteredArray = unfilteredArray.slice(groupingIndex)
-      
-    }
-    if(unfilteredArray.length > 0)
-    {
-      filteredArray.push(unfilteredArray)
-    }
+    const sheetsToData = async () => {
+      try {
+        await doc.useServiceAccountAuth({
+          client_email: CLIENT_EMAIL,
+          private_key: PRIVATE_KEY,
+        });
+    
+        // loads document properties and worksheets-
+        await doc.loadInfo();
+        
+        var sheet = doc.sheetsById["0"];
+        var row = sheet.getRows();
+    
+        var homeSheet = []
+        //rows for home page
+        row.then((value) => {
+          for(var i = 0; i < value.length; i++)
+          {
+            homeSheet.push(String(value[i]['_rawData'][0]))
+          }
+          return homeSheet
+          
+        }).then((finalArray) => {this.setState({words: finalArray})});
+        
 
-    renderIntake = []
+        var sheet = doc.sheetsById["950251716"];
+        var row = sheet.getRows();
+    
+        var intakeSheet = []
+        //rows for home page
+        row.then((value) => {
+          for(var i = 0; i < value.length; i++)
+          {
+            var unparsed = String(value[i]['_rawData'][0])
+            
+            intakeSheet.push((unparsed.split("https://drive.google.com/file/d/")[1]).split("/view?usp=sharing")[0])
+          }
+          return intakeSheet
+          
+        }).then((finalArray) => {
+            unfilteredArray = finalArray
+            //slice notation includes start, does not include end, [x, y)
+            while(unfilteredArray.length > 2)
+            {
+              var groupingIndex = getRandomInt(3)
+              
+              filteredArray.push(unfilteredArray.slice(0, groupingIndex))
+              unfilteredArray = unfilteredArray.slice(groupingIndex)
+              
+            }
+            if(unfilteredArray.length > 0)
+            {
+              filteredArray.push(unfilteredArray)
+            }
 
-    for(var i = 0; i < filteredArray.length; i++)
-    {
-      for(var j = 0; j < filteredArray[i].length; j++)
-      {
-        renderIntake.push(filteredArray[i].length + filteredArray[i][j])
+            renderIntake = []
+
+            for(var i = 0; i < filteredArray.length; i++)
+            {
+              for(var j = 0; j < filteredArray[i].length; j++)
+              {
+                renderIntake.push(filteredArray[i].length + filteredArray[i][j])
+              }
+            }
+          
+          
+          
+          
+          this.setState({images: renderIntake})});
+        
+      } catch (e) {
+        console.error('Error: ', e);
       }
-    }
+    };
+
+    sheetsToData()
+    //console.log(sheetsToStates().then((values) => {console.log(values)}))
+    //this.setState({words: sheetsToStates})
+      
+    
   }
 
   pageSelect = (requestedPage) => {
@@ -114,32 +155,34 @@ class Home extends React.Component {
   {  
     return (   
       <div className="contentContainer"> {/* DO NOT REMOVE THIS DIV COMPONENT*/}
-      <br></br>
-      <br></br>
-       <center><h1>NICK CHASE</h1></center>
-       <br></br>
-       
-       <Navbar bg="white" variant="light">
+        <br></br>
+        <br></br>
+        <center><h1>NICK CHASE</h1></center>
+        <br></br>
+
+        <Navbar bg="white" variant="light">
         <Container className="navBarContainer">
-        <Nav onClick={e => e.preventDefault()} defaultActiveKey="HOME">
-        &emsp;&emsp;<Nav.Link href="STREAM" onClick={e => this.pageSelect(e)}>STREAM</Nav.Link>&emsp;&emsp;
-        &emsp;&emsp;<Nav.Link href="VIDEOS" onClick={e => this.pageSelect(e)}>VIDEOS</Nav.Link>&emsp;&emsp;
-        &emsp;&emsp;<Nav.Link href="HOME" onClick={e => this.pageSelect(e)} >HOME</Nav.Link>&emsp;&emsp;
-        &emsp;&emsp;<Nav.Link href="INTAKE" onClick={e => this.pageSelect(e)}>INTAKE</Nav.Link>&emsp;&emsp;
-        &emsp;&emsp;<Nav.Link href="READING" onClick={e => this.pageSelect(e)}>READING</Nav.Link>&emsp;&emsp;
-        </Nav>
+          <Nav onClick={e => e.preventDefault()} defaultActiveKey="HOME">
+            &emsp;&emsp;<Nav.Link href="STREAM" onClick={e => this.pageSelect(e)}>STREAM</Nav.Link>&emsp;&emsp;
+            &emsp;&emsp;<Nav.Link href="VIDEOS" onClick={e => this.pageSelect(e)}>VIDEOS</Nav.Link>&emsp;&emsp;
+            &emsp;&emsp;<Nav.Link href="HOME" onClick={e => this.pageSelect(e)} >HOME</Nav.Link>&emsp;&emsp;
+            &emsp;&emsp;<Nav.Link href="INTAKE" onClick={e => this.pageSelect(e)}>INTAKE</Nav.Link>&emsp;&emsp;
+            &emsp;&emsp;<Nav.Link href="READING" onClick={e => this.pageSelect(e)}>READING</Nav.Link>&emsp;&emsp;
+          </Nav>
         </Container>
       </Navbar> {/**/}
       <br></br>
-        {this.state.page === "HOME" && <div className="pageContainer">
-          <center> <p className="subheader">fled the scene</p>
-          <p className="subheader">love cuts like ______</p>
-          <img src="https://drive.google.com/uc?export=view&id=1ocuFnKiHPoAeAN7KOhCXYtE9oa94-9uk" alt="nickchase"></img>
-          <br></br>
-          <br></br>
-          {words.map(word => (<div>
-                <p className="subheader">{word}</p>   
-              </div>) )} 
+
+      {this.state.page === "HOME" && <div className="pageContainer">
+          <center> 
+            <p className="subheader">fled the scene</p>
+            <p className="subheader">love cuts like ______</p>
+            <img src="https://drive.google.com/uc?export=view&id=1ocuFnKiHPoAeAN7KOhCXYtE9oa94-9uk" alt="nickchase"></img>
+            <br></br>
+            <br></br>
+            {this.state.words.map(word => (<div>
+                  <p className="subheader">{word}</p>   
+                </div>) )} 
           </center>
           <br></br>
           <center>
@@ -147,60 +190,49 @@ class Home extends React.Component {
             <br></br>
             <Clock format={'dddd'} ticking={true} timezone={'US/Eastern'} className="dayOfWeek" /> 
             <br></br>
-            
-            
             <Clock format={'hh:mm a'} ticking={true} timezone={'US/Eastern'} />
-            
             <h1 className="atl">ATLANTA</h1>
           </center>
-
-          
-          
-          
-          </div>}
+        </div>}
+        
         {this.state.page === "VIDEOS" && <div className="pageContainer">
-          <center>
-            <iframe src="https://www.youtube.com/embed/uOfIyX7ow1c" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            <br></br>
-            <br></br>
-            <br></br>
-          </center>
+            <center>
+              <iframe src="https://www.youtube.com/embed/uOfIyX7ow1c" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              <br></br>
+              <br></br>
+              <br></br>
+            </center>
           </div>}
         {this.state.page === "INTAKE" && <div className="pageContainer">
-        
-        
-        <div className="row">
+          <div className="row">
 
-          {renderIntake.map(item => (
-            
-            item[0] === '1' ? 
-              <div className="column1">
-                <center>
-                  <img src={"https://drive.google.com/uc?export=view&id=" + item.slice(1)} style={{width: '100%'}}></img>
-                  <br></br>
-                  <br></br>
-                </center>
-              </div> 
-            : item[0] === '2' ? 
-                <div className="column2">
+            {this.state.images.map(item => (
+              item[0] === '1' ? 
+                <div className="column1">
                   <center>
                     <img src={"https://drive.google.com/uc?export=view&id=" + item.slice(1)} style={{width: '100%'}}></img>
                     <br></br>
-                  <br></br>
+                    <br></br>
                   </center>
                 </div> 
-            : item[0] === '3' ? 
-              <div className="column3">
-                <center>
-                  <img src={"https://drive.google.com/uc?export=view&id=" + item.slice(1)} style={{width: '100%'}}></img>
-                  <br></br>
-                  <br></br>
-                  </center>
-              </div> 
-            : <div><h1>error</h1></div>)  )}
-            </div>
-            
-
+              : item[0] === '2' ? 
+                  <div className="column2">
+                    <center>
+                      <img src={"https://drive.google.com/uc?export=view&id=" + item.slice(1)} style={{width: '100%'}}></img>
+                      <br></br>
+                    <br></br>
+                    </center>
+                  </div> 
+              : item[0] === '3' ? 
+                <div className="column3">
+                  <center>
+                    <img src={"https://drive.google.com/uc?export=view&id=" + item.slice(1)} style={{width: '100%'}}></img>
+                    <br></br>
+                    <br></br>
+                    </center>
+                </div> 
+              : <div><h1>error</h1></div>)  )}
+              </div>
           </div>}
 
         {this.state.page === "STREAM" && <div className="pageContainer">
