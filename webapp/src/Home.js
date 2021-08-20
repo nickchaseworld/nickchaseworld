@@ -55,6 +55,9 @@ class Home extends React.Component {
       images: [],
       books: [],
       videos: [],
+      spotify: null,
+      appleMusic: null,
+      soundcloud: null,
     };
     
   } 
@@ -160,9 +163,30 @@ class Home extends React.Component {
           
         }).then((finalArray) => {this.setState({videos: finalArray})});
         
+
+        var sheet = doc.sheetsById["374721241"];
+        var row = sheet.getRows();
+    
+        var streamSheet = []
+        //rows for home page
+        row.then((value) => {
+          for(var i = 0; i < value.length; i++)
+          {
+            streamSheet.push(String(value[i]['_rawData'][0]))
+          }
+          return streamSheet
+          
+        }).then((finalArray) => {console.log(this.setState({spotify: finalArray[0], appleMusic: finalArray[1], soundcloud: finalArray[2]}))});
+
+
+
       } catch (e) {
         console.error('Error: ', e);
       }
+
+      
+
+      
     };
 
     sheetsToData()
@@ -276,13 +300,13 @@ class Home extends React.Component {
           <br></br>
           */}
 
-          <iframe src="https://open.spotify.com/embed/artist/0L403rnpKcBVAwX9Kxmta5?theme=0" className="streaming" frameBorder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+          <iframe src={this.state.spotify} className="streaming" frameBorder="0" allowtransparency="true" allow="encrypted-media"></iframe>
               <br></br>
               <br></br>
-              <iframe className="streaming" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" src="https://embed.music.apple.com/us/album/semesterly/1554434311"></iframe>
+              <iframe src={this.state.appleMusic} className="streaming" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation"></iframe>
               <br></br>
               <br></br>
-              <iframe className="streaming" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/894891235&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe><div style={{fontSize: '10px', color: '#cccccc', lineBreak: 'anywhere', wordBreak: 'normal', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis', fontFamily: 'Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif', fontWeight: '100'}}></div>
+              <iframe className="streaming" src={this.state.soundcloud}></iframe><div style={{fontSize: '10px', color: '#cccccc', lineBreak: 'anywhere', wordBreak: 'normal', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis', fontFamily: 'Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif', fontWeight: '100'}}></div>
            {/*} {this.state.musicProvider === "Spotify" && <div>
               
               </div>}
