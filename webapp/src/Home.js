@@ -52,8 +52,8 @@ class Home extends React.Component {
       page: "HOME",
       musicProvider: "Spotify",
       words: [],
-      test: null,
-      images: []
+      images: [],
+      books: [],
     };
     
   } 
@@ -125,11 +125,25 @@ class Home extends React.Component {
                 renderIntake.push(filteredArray[i].length + filteredArray[i][j])
               }
             }
-          
-          
-          
-          
           this.setState({images: renderIntake})});
+
+        var sheet = doc.sheetsById["2063393064"];
+        var row = sheet.getRows();
+    
+        var bookSheet = []
+        //rows for home page
+        row.then((value) => {
+          for(var i = 0; i < value.length; i++)
+          {
+            var unparsed = String(value[i]['_rawData'][0])
+            
+            var bookCoverImg = (unparsed.split("https://drive.google.com/file/d/")[1]).split("/view?usp=sharing")[0]
+            var bookDescription = String(value[i]['_rawData'][1])
+            bookSheet.push([bookCoverImg, bookDescription])
+          }
+          return bookSheet
+          
+        }).then((finalArray) => {this.setState({books: finalArray})});
         
       } catch (e) {
         console.error('Error: ', e);
@@ -261,11 +275,10 @@ class Home extends React.Component {
         {this.state.page === "READING" && <div className="pageContainer">
           
         <Slider {...settings}>
-      
-          {pastReading.map((bookCover, index) => <div className="bookSlide">
-            <img src={"https://drive.google.com/uc?export=view&id=" + bookCover}></img>
+          {this.state.books.map((item, index) => <div className="bookSlide">
+            <img src={"https://drive.google.com/uc?export=view&id=" + item[0]}></img>
                   <br></br>
-                  <center><p className="bookDescription">"{index}: some sort of description"</p></center>
+                  <center><p className="bookDescription">{item[1]}</p></center>
           </div>)}
         </Slider>
           </div>}
