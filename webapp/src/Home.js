@@ -54,6 +54,7 @@ class Home extends React.Component {
       words: [],
       images: [],
       books: [],
+      videos: [],
     };
     
   } 
@@ -144,6 +145,20 @@ class Home extends React.Component {
           return bookSheet
           
         }).then((finalArray) => {this.setState({books: finalArray})});
+
+        var sheet = doc.sheetsById["2075105674"];
+        var row = sheet.getRows();
+    
+        var videosSheet = []
+        //rows for home page
+        row.then((value) => {
+          for(var i = 0; i < value.length; i++)
+          {
+            videosSheet.push(String(value[i]['_rawData'][0]))
+          }
+          return videosSheet
+          
+        }).then((finalArray) => {this.setState({videos: finalArray})});
         
       } catch (e) {
         console.error('Error: ', e);
@@ -211,9 +226,11 @@ class Home extends React.Component {
         
         {this.state.page === "VIDEOS" && <div className="pageContainer">
             <center>
-              <iframe src="https://www.youtube.com/embed/uOfIyX7ow1c" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-              <br></br>
-              <br></br>
+            {this.state.videos.map((item, index) => <div>
+              <iframe src={item} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <br></br>
+                <br></br>
+              </div>)}
               <br></br>
             </center>
           </div>}
@@ -258,6 +275,7 @@ class Home extends React.Component {
           </DropdownButton>
           <br></br>
           */}
+
           <iframe src="https://open.spotify.com/embed/artist/0L403rnpKcBVAwX9Kxmta5?theme=0" className="streaming" frameBorder="0" allowtransparency="true" allow="encrypted-media"></iframe>
               <br></br>
               <br></br>
