@@ -58,6 +58,7 @@ class Home extends React.Component {
       spotify: null,
       appleMusic: null,
       soundcloud: null,
+      homePageImage: null,
     };
     
   } 
@@ -87,7 +88,13 @@ class Home extends React.Component {
           }
           return homeSheet
           
-        }).then((finalArray) => {this.setState({words: finalArray})});
+        }).then((finalArray) => {
+          //console.log((finalArray[0].split("https://drive.google.com/file/d/")[1]).split("/view?usp=sharing")[0])
+          console.log()
+          this.setState({homePageImage: (finalArray[0].split("https://drive.google.com/file/d/")[1]).split("/view?usp=sharing")[0]})
+          finalArray.shift()
+          this.setState({words: finalArray})
+        });
         
 
         var sheet = doc.sheetsById["950251716"];
@@ -230,7 +237,7 @@ class Home extends React.Component {
           <center> 
             <p className="subheader">fled the scene</p>
             <p className="subheader">love cuts like ______</p>
-            <img src="https://drive.google.com/uc?export=view&id=1ocuFnKiHPoAeAN7KOhCXYtE9oa94-9uk" alt="nickchase"></img>
+            <img src={"https://drive.google.com/uc?export=view&id=" + this.state.homePageImage} alt="nickchase"></img>
             <br></br>
             <br></br>
             {this.state.words.map(word => (<div>
