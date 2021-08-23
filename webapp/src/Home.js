@@ -8,17 +8,13 @@ import 'slick-carousel/slick/slick.css';
 
 import './Home.css';
 
-var words = ['Minnesota', 'home', 'shells', 'sales job', 'towards', 'away', 'burns', 'glasses', 'NBA tickets', 'sandals', 'galaxies']
-var intakeArray = ['1HuPcbunfGJD7xJxpKA9eW9_Va5w0piHd', '1fk1Rk7tp4I790RI6diBmFXUGiEwMsBtu', '1IZGSAvkU99XvZeLm9GaS1ABoz5dEMR0z', '1A0SVChLrRPGazPL3TtL4i0vhLmjgEunx', '17ZiHAQFiU1gKckGmWe9H7o8ZQizfaxG8', '1Jv7cA46280QCjyCl9YstInPdCN7kTol0', '1q1536MDJqZPNPzUVDdEqbLV_XHjlLQVj', '1hRreHylJ7oLyHABfyrKWERHzuQqpXD_J']
-var thirtyThreeTest = ['1HuPcbunfGJD7xJxpKA9eW9_Va5w0piHd', '1fk1Rk7tp4I790RI6diBmFXUGiEwMsBtu', '1IZGSAvkU99XvZeLm9GaS1ABoz5dEMR0z']
-var fiftyTest = ['1A0SVChLrRPGazPL3TtL4i0vhLmjgEunx', '17ZiHAQFiU1gKckGmWe9H7o8ZQizfaxG8']
-var hundredTest = ['1Jv7cA46280QCjyCl9YstInPdCN7kTol0']
 
-var unfilteredArray = ['1HuPcbunfGJD7xJxpKA9eW9_Va5w0piHd', '1fk1Rk7tp4I790RI6diBmFXUGiEwMsBtu', '1IZGSAvkU99XvZeLm9GaS1ABoz5dEMR0z', '1A0SVChLrRPGazPL3TtL4i0vhLmjgEunx', '17ZiHAQFiU1gKckGmWe9H7o8ZQizfaxG8', '1Jv7cA46280QCjyCl9YstInPdCN7kTol0', '1q1536MDJqZPNPzUVDdEqbLV_XHjlLQVj', '1hRreHylJ7oLyHABfyrKWERHzuQqpXD_J']
+
+var unfilteredArray = []
 var filteredArray = []
 var renderIntake = []
 var currentlyReading = []
-var pastReading = ['1nHBhWEAnYvVeHBIBr-miXWh-I_x_pdsh', '1dDdTgmj9EmwoI_q3lfgposju7H51Qpdl', '1aiNr-4bKMOvN7sK61RRcq3GAWRLGL-Rj', '1JlA1eoWlWcRkOqumG2uo9taxtatkJ3bQ']
+
 
 var settings = {
   dots: true,
@@ -63,6 +59,8 @@ class Home extends React.Component {
       homePageImage: null,
       textIdx: 0,
     };
+
+    this.submitWord = this.submitWord.bind(this)
     
   } 
 
@@ -87,6 +85,38 @@ class Home extends React.Component {
 
 
   */
+
+  submitWord = (wordInput) => {
+    //console.log(wordInput.key )
+    if(wordInput.key === "Enter")
+    {
+      console.log(wordInput.target.value)
+      if(wordInput.target.value === "")
+      {
+        alert("you gotta say something!")
+      }
+      else
+      {
+
+        doc.useServiceAccountAuth({
+          client_email: CLIENT_EMAIL,
+          private_key: PRIVATE_KEY,
+        });
+    
+        // loads document properties and worksheets-
+         doc.loadInfo();
+        
+        var sheet = doc.sheetsById["0"];
+        sheet.addRows([
+          { Words: wordInput.target.value,  VISIBLE: 'N'}])
+           
+        alert("your response has been submitted.\nlove,\n    Nick Chase")
+        wordInput.target.value = ""
+      }
+
+    }
+    
+  }
   
 
   componentDidMount()
@@ -277,7 +307,8 @@ class Home extends React.Component {
             <p className="subheader">fled the scene</p>
             <p className="subheader">love cuts like {textThatChanges}</p>
             <br></br>
-            {/*<input type="text" id="fname" name="fname"/>*/}
+            <p className="subheader"><input type="text" id="fname" name="fname" onKeyPress={e => this.submitWord(e)}/></p>
+            <br></br>
             <img src={"https://drive.google.com/uc?export=view&id=" + this.state.homePageImage} alt="nickchase"></img>
             <br></br>
             <br></br>
