@@ -110,7 +110,10 @@ class Home extends React.Component {
         row.then((value) => {
           for(var i = 0; i < value.length; i++)
           {
-            homeSheet.push(String(value[i]['_rawData'][0]))
+            if(((String(value[i]['_rawData'][1])).toUpperCase() === 'Y'))
+            {
+              homeSheet.push(String(value[i]['_rawData'][0]))
+            }
           }
           return homeSheet
           
@@ -205,6 +208,7 @@ class Home extends React.Component {
           for(var i = 0; i < value.length; i++)
           {
             streamSheet.push(String(value[i]['_rawData'][0]))
+            
           }
           return streamSheet
           
@@ -222,7 +226,6 @@ class Home extends React.Component {
 
     sheetsToData()
     this.timeout = setInterval(() => {
-      console.log(this.state.textIdx)
       let currentIdx = this.state.textIdx;
       this.setState({ textIdx: currentIdx + 1 });
     }, 3000);
