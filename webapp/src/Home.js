@@ -309,7 +309,7 @@ class Home extends React.Component {
             <br></br>
             <p className="subheader"><input type="text" id="fname" name="fname" onKeyPress={e => this.submitWord(e)}/></p>
             <br></br>
-            <img src={"https://drive.google.com/uc?export=view&id=" + this.state.homePageImage} alt="nickchase"></img>
+            {this.state.homePageImage !== null && <img src={"https://drive.google.com/uc?export=view&id=" + this.state.homePageImage} alt="nickchase"></img>}
             <br></br>
             <br></br>
             {this.state.words.map(word => (word != "_____" && <div>
