@@ -27,7 +27,7 @@ var settings = {
   autoplay: true,
   autoplaySpeed: 5000,
   slidesToShow: 1,
-  slidesToScroll: 1
+  slidesToScroll: 1,
 };
 
 const SPREADSHEET_ID = "1HWPDbItdCiM973f9z3nc3HuTeV0gaB6UwZp2o8lgzOU";
@@ -42,6 +42,8 @@ const doc = new GoogleSpreadsheet(SPREADSHEET_ID);
 function getRandomInt(max) {
   return Math.floor(Math.random() * 3) + 1;
 }
+
+
 
 class Home extends React.Component { 
 
@@ -59,9 +61,33 @@ class Home extends React.Component {
       appleMusic: null,
       soundcloud: null,
       homePageImage: null,
+      textIdx: 0,
     };
     
   } 
+
+  /*
+  const sheetsToData = async () => {
+      try {
+        await doc.useServiceAccountAuth({
+          client_email: CLIENT_EMAIL,
+          private_key: PRIVATE_KEY,
+        });
+    
+        // loads document properties and worksheets-
+        await doc.loadInfo();
+        
+        var sheet = doc.sheetsById["0"];
+        var row = sheet.getRows();
+
+        const moreRows = await sheet.addRows([
+          { Words: 'Sergey Brin' },
+          
+        ]);
+
+
+  */
+  
 
   componentDidMount()
   {
@@ -78,7 +104,7 @@ class Home extends React.Component {
         
         var sheet = doc.sheetsById["0"];
         var row = sheet.getRows();
-    
+        
         var homeSheet = []
         //rows for home page
         row.then((value) => {
@@ -90,10 +116,9 @@ class Home extends React.Component {
           
         }).then((finalArray) => {
           //console.log((finalArray[0].split("https://drive.google.com/file/d/")[1]).split("/view?usp=sharing")[0])
-          console.log()
           this.setState({homePageImage: (finalArray[0].split("https://drive.google.com/file/d/")[1]).split("/view?usp=sharing")[0]})
-          finalArray.shift()
-          this.setState({words: finalArray})
+          finalArray[0] = "_____"
+          this.setState({words: finalArray})    
         });
         
 
@@ -183,26 +208,35 @@ class Home extends React.Component {
           }
           return streamSheet
           
-        }).then((finalArray) => {console.log(this.setState({spotify: finalArray[0], appleMusic: finalArray[1], soundcloud: finalArray[2]}))});
+        }).then((finalArray) => {this.setState({spotify: finalArray[0], appleMusic: finalArray[1], soundcloud: finalArray[2]})});
 
 
 
       } catch (e) {
         console.error('Error: ', e);
       }
-
       
 
       
     };
 
     sheetsToData()
+    this.timeout = setInterval(() => {
+      console.log(this.state.textIdx)
+      let currentIdx = this.state.textIdx;
+      this.setState({ textIdx: currentIdx + 1 });
+    }, 3000);
+
     //console.log(sheetsToStates().then((values) => {console.log(values)}))
     //this.setState({words: sheetsToStates})
       
     
   }
 
+  componentDidUnmount() {
+    clearInterval(this.timeout);
+  }
+  
   pageSelect = (requestedPage) => {
     this.setState({page: requestedPage.target.innerText})
   }
@@ -213,6 +247,8 @@ class Home extends React.Component {
   
   render()
   {  
+    let textThatChanges = this.state.words[this.state.textIdx % this.state.words.length];
+
     return (   
       <div className="contentContainer"> {/* DO NOT REMOVE THIS DIV COMPONENT*/}
         <br></br>
@@ -236,11 +272,13 @@ class Home extends React.Component {
       {this.state.page === "HOME" && <div className="pageContainer">
           <center> 
             <p className="subheader">fled the scene</p>
-            <p className="subheader">love cuts like ______</p>
+            <p className="subheader">love cuts like {textThatChanges}</p>
+            <br></br>
+            {/*<input type="text" id="fname" name="fname"/>*/}
             <img src={"https://drive.google.com/uc?export=view&id=" + this.state.homePageImage} alt="nickchase"></img>
             <br></br>
             <br></br>
-            {this.state.words.map(word => (<div>
+            {this.state.words.map(word => (word != "_____" && <div>
                   <p className="subheader">{word}</p>   
                 </div>) )} 
           </center>
