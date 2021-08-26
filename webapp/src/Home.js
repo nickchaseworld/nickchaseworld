@@ -304,8 +304,8 @@ class Home extends React.Component {
 
       {this.state.page === "HOME" && <div className="pageContainer">
           <center> 
-            <p className="subheader">fled the scene</p>
-            <p className="subheader">love cuts like {textThatChanges}</p>
+            <p className="subheader">Hey Nick,</p>
+            <p className="subheader">make a song about {textThatChanges}</p>
             <br></br>
             <p className="subheader"><input type="text" id="fname" name="fname" onKeyPress={e => this.submitWord(e)}/></p>
             <br></br>
