@@ -1,13 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Home from './Home';
+import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {
   BrowserRouter as Router,
   Switch,
   Route,
+  Redirect,
 } from "react-router-dom";
-import 'bootstrap/dist/css/bootstrap.min.css';
+//import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 /*using react router we set a constant equal to whatever component
@@ -15,8 +17,8 @@ we would like to render*/
 const routing = (
   <Router>
     <Switch>
-      <Route exact path="/" component={Home}/>  
-      <Route exact path="/*" component={Home}/>    
+      <Route exact path="/" component={App}/>  
+      <Route exact path="/*" component={Redirect}/>    
       
     </Switch>
   </Router>
