@@ -9,7 +9,7 @@ import {
   Route,
   Redirect,
 } from "react-router-dom";
-//import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 /*using react router we set a constant equal to whatever component
@@ -17,7 +17,7 @@ we would like to render*/
 const routing = (
   <Router>
     <Switch>
-      <Route exact path="/" component={App}/>  
+      <Route exact path="/" component={Home}/>  
       <Route exact path="/*" component={Redirect}/>    
       
     </Switch>
