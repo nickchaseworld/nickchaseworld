@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 
 
-
+//remove home.css, home dependecn
 class App extends React.Component { 
 
   constructor() {
@@ -25,7 +25,7 @@ class App extends React.Component {
   {  
     return (
       <div className="pageContainer">
-      <center><h1>nickchasedev.netlify.com</h1></center>
+      <center><h1>nickchasedev.netlify.app</h1></center>
     
 
       <div class="center-screen">
@@ -36,7 +36,7 @@ class App extends React.Component {
         <span className="text">A website development service dedicated to helping innovators and creators alike build the site of their dreams.
         <br></br>
         <br></br>
-          “nickchasedev.netlify.com is currently under development by <a href="https://whatadamnsite.com" target="_blank" rel="noreferrer">What a Damn Site.</a>”
+          “nickchasedev.netlify.app is currently under development by <a href="https://whatadamnsite.com" target="_blank" rel="noreferrer">What a Damn Site.</a>”
       <br></br>
       <br></br>
       based in Atlanta, delivering everywhere.

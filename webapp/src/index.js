@@ -9,7 +9,7 @@ import {
   Route,
   Redirect,
 } from "react-router-dom";
-//import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 /*using react router we set a constant equal to whatever component
