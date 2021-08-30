@@ -24,6 +24,9 @@ var settings = {
   autoplaySpeed: 5000,
   slidesToShow: 1,
   slidesToScroll: 1,
+  headerLineOne: null,
+  headerLineTwo: null,
+  mailingListHeader: null,
 };
 
 const SPREADSHEET_ID = "1HWPDbItdCiM973f9z3nc3HuTeV0gaB6UwZp2o8lgzOU";
@@ -63,28 +66,6 @@ class Home extends React.Component {
     this.submitWord = this.submitWord.bind(this)
     
   } 
-
-  /*
-  const sheetsToData = async () => {
-      try {
-        await doc.useServiceAccountAuth({
-          client_email: CLIENT_EMAIL,
-          private_key: PRIVATE_KEY,
-        });
-    
-        // loads document properties and worksheets-
-        await doc.loadInfo();
-        
-        var sheet = doc.sheetsById["0"];
-        var row = sheet.getRows();
-
-        const moreRows = await sheet.addRows([
-          { Words: 'Sergey Brin' },
-          
-        ]);
-
-
-  */
 
   submitWord = (wordInput) => {
     //console.log(wordInput.key )
@@ -244,6 +225,22 @@ class Home extends React.Component {
           
         }).then((finalArray) => {this.setState({spotify: finalArray[0], appleMusic: finalArray[1], soundcloud: finalArray[2]})});
 
+        var sheet = doc.sheetsById["1952798230"];
+        var row = sheet.getRows();
+    
+        var miscSheet = []
+        //rows for home page
+        row.then((value) => {
+          for(var i = 0; i < value.length; i++)
+          {
+            miscSheet.push(String(value[i]['_rawData'][1]))
+            
+          }
+          //alert(miscSheet)
+          return miscSheet
+          
+        }).then((finalArray) => {this.setState({headerLineOne: finalArray[0], headerLineTwo: finalArray[1], mailingListHeader: finalArray[2]})});
+
 
 
       } catch (e) {
@@ -304,8 +301,8 @@ class Home extends React.Component {
 
       {this.state.page === "HOME" && <div className="pageContainer">
           <center> 
-            <p className="subheader">hey nick,</p>
-            <p className="subheader">make a song about {textThatChanges}</p>
+            <p className="subheader">{this.state.headerLineOne}</p>
+            <p className="subheader">{this.state.headerLineTwo} {textThatChanges}</p>
             <br></br>
             <p className="subheader"><input type="text" id="fname" name="fname" onKeyPress={e => this.submitWord(e)}/></p>
             <br></br>
