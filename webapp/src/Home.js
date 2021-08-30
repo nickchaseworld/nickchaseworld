@@ -61,17 +61,45 @@ class Home extends React.Component {
       soundcloud: null,
       homePageImage: null,
       textIdx: 0,
+      currentWord: null,
     };
 
     this.submitWord = this.submitWord.bind(this)
+    this.submitWordAlt = this.submitWordAlt.bind(this)
     
   } 
 
+  submitWordAlt = () => {
+    var val = document.getElementById("wordToSubmit").value
+    if(val === "")
+      {
+        alert("you gotta say something!")
+      }
+      else
+      {
+
+        doc.useServiceAccountAuth({
+          client_email: CLIENT_EMAIL,
+          private_key: PRIVATE_KEY,
+        });
+    
+        // loads document properties and worksheets-
+         doc.loadInfo();
+        
+        var sheet = doc.sheetsById["0"];
+        sheet.addRows([
+          { Words: val,  VISIBLE: 'N'}])
+           
+        alert("your response has been submitted.\nlove,\n    Nick Chase")
+        document.getElementById("wordToSubmit").value = ""
+      }
+  }
+
   submitWord = (wordInput) => {
     //console.log(wordInput.key )
+    this.setState({currentWord: wordInput.target.value})
     if(wordInput.key === "Enter")
     {
-      console.log(wordInput.target.value)
       if(wordInput.target.value === "")
       {
         alert("you gotta say something!")
@@ -304,7 +332,21 @@ class Home extends React.Component {
             <p className="subheader">{this.state.headerLineOne}</p>
             <p className="subheader">{this.state.headerLineTwo} {textThatChanges}</p>
             <br></br>
-            <p className="subheader"><input type="text" id="fname" name="fname" onKeyPress={e => this.submitWord(e)}/></p>
+            
+              <div class="element">
+                <p className="subheader"><input type="text" id="wordToSubmit" onKeyPress={e => this.submitWord(e)}/></p>
+              </div>
+            <div class="element">
+              <div className="submitArrow">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" onClick={e => this.submitWordAlt(e)}>
+                  <title/>
+                  <path d="M12,1A11,11,0,1,0,23,12,11,11,0,0,0,12,1Zm6,12H8.41l2.29,2.29a1,1,0,1,1-1.41,1.41l-4-4a1,1,0,0,1,0-1.41l4-4a1,1,0,0,1,1.41,1.41L8.41,11H18a1,1,0,0,1,0,2Z"/>
+                </svg>
+              </div>
+           
+          </div>
+            
+            
             <br></br>
             {this.state.homePageImage !== null && <img src={"https://drive.google.com/uc?export=view&id=" + this.state.homePageImage} alt="nickchase"></img>}
             <br></br>
