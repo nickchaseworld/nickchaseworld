@@ -12,6 +12,7 @@
 }
 
 input {
+    padding-left: 10px;
     margin-left: 40px !important;
 }
 
@@ -205,7 +206,12 @@ iframe {
     }
 
     input {
+        padding-left: 10px;
         margin-left: 25px !important;
+    }
+
+    textarea {
+        padding-left: 10px;
     }
 
     html {

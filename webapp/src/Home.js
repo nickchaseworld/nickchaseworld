@@ -24,10 +24,6 @@ var settings = {
   autoplaySpeed: 5000,
   slidesToShow: 1,
   slidesToScroll: 1,
-  headerLineOne: null,
-  headerLineTwo: null,
-  mailingListHeader: null,
-  mailingPlaceholder: null,
 };
 
 const SPREADSHEET_ID = "1HWPDbItdCiM973f9z3nc3HuTeV0gaB6UwZp2o8lgzOU";
@@ -62,6 +58,14 @@ class Home extends React.Component {
       soundcloud: null,
       homePageImage: null,
       textIdx: 0,
+      headerLineOne: null,
+      headerLineTwo: null,
+      mailingListHeader: null,
+      mailingPlaceholder: null,
+      wordReject: null,
+      wordAccept: null,
+      mailReject: null,
+      mailAccept: null,
     };
 
     this.submitWord = this.submitWord.bind(this)
@@ -78,7 +82,7 @@ class Home extends React.Component {
     {
       if(wordInput.target.value === "")
       {
-        alert("that's empty! try again.")
+        alert(this.state.mailReject)
       }
       else
       {
@@ -95,7 +99,7 @@ class Home extends React.Component {
         sheet.addRows([
           { Entry: wordInput.target.value}])
            
-        alert("thanks for joining!\nlove,\n    Nick Chase")
+        alert(this.state.mailAccept)
         wordInput.target.value = ""
       }
 
@@ -107,7 +111,7 @@ class Home extends React.Component {
     var val = document.getElementById("mailingListInput").value
     if(val === "")
       {
-        alert("that's empty! try again.")
+        alert(this.state.mailReject)
       }
       else
       {
@@ -124,7 +128,7 @@ class Home extends React.Component {
         sheet.addRows([
           { Entry: val}])
            
-        alert("your response has been submitted.\nlove,\n    Nick Chase")
+        alert(this.state.mailAccept)
         document.getElementById("mailingListInput").value = ""
       }
 
@@ -134,7 +138,7 @@ class Home extends React.Component {
     var val = document.getElementById("wordToSubmit").value
     if(val === "")
       {
-        alert("you gotta say something!")
+        alert(this.state.wordReject)
       }
       else
       {
@@ -151,7 +155,7 @@ class Home extends React.Component {
         sheet.addRows([
           { Words: val,  VISIBLE: 'N'}])
            
-        alert("your response has been submitted.\nlove,\n    Nick Chase")
+        alert(this.state.wordAccept)
         document.getElementById("wordToSubmit").value = ""
       }
   }
@@ -162,7 +166,7 @@ class Home extends React.Component {
     {
       if(wordInput.target.value === "")
       {
-        alert("you gotta say something!")
+        alert(this.state.wordReject)
       }
       else
       {
@@ -179,7 +183,7 @@ class Home extends React.Component {
         sheet.addRows([
           { Words: wordInput.target.value,  VISIBLE: 'N'}])
            
-        alert("your response has been submitted.\nlove,\n    Nick Chase")
+        alert(this.state.wordAccept)
         wordInput.target.value = ""
       }
 
@@ -223,47 +227,6 @@ class Home extends React.Component {
           this.setState({words: finalArray})    
         });
         
-
-        var sheet = doc.sheetsById["950251716"];
-        var row = sheet.getRows();
-    
-        var intakeSheet = []
-        //rows for home page
-        row.then((value) => {
-          for(var i = 0; i < value.length; i++)
-          {
-            var unparsed = String(value[i]['_rawData'][0])
-            
-            intakeSheet.push((unparsed.split("https://drive.google.com/file/d/")[1]).split("/view?usp=sharing")[0])
-          }
-          return intakeSheet
-          
-        }).then((finalArray) => {
-            unfilteredArray = finalArray
-            //slice notation includes start, does not include end, [x, y)
-            while(unfilteredArray.length > 2)
-            {
-              var groupingIndex = getRandomInt(3)
-              
-              filteredArray.push(unfilteredArray.slice(0, groupingIndex))
-              unfilteredArray = unfilteredArray.slice(groupingIndex)
-              
-            }
-            if(unfilteredArray.length > 0)
-            {
-              filteredArray.push(unfilteredArray)
-            }
-
-            renderIntake = []
-
-            for(var i = 0; i < filteredArray.length; i++)
-            {
-              for(var j = 0; j < filteredArray[i].length; j++)
-              {
-                renderIntake.push(filteredArray[i].length + filteredArray[i][j])
-              }
-            }
-          this.setState({images: renderIntake})});
 
         var sheet = doc.sheetsById["2063393064"];
         var row = sheet.getRows();
@@ -324,11 +287,51 @@ class Home extends React.Component {
             miscSheet.push(String(value[i]['_rawData'][1]))
             
           }
-          //alert(miscSheet)
           return miscSheet
           
-        }).then((finalArray) => {this.setState({headerLineOne: finalArray[0], headerLineTwo: finalArray[1], mailingListHeader: finalArray[2], mailingPlaceholder: finalArray[3]})});
+        }).then((finalArray) => {this.setState({headerLineOne: finalArray[0], headerLineTwo: finalArray[1], mailingListHeader: finalArray[2], mailingPlaceholder: finalArray[3], wordReject: finalArray[4], wordAccept: finalArray[5], mailReject: finalArray[6], mailAccept: finalArray[7]})});
+        
 
+        var sheet = doc.sheetsById["950251716"];
+        var row = sheet.getRows();
+    
+        var intakeSheet = []
+        //rows for home page
+        row.then((value) => {
+          for(var i = 0; i < value.length; i++)
+          {
+            var unparsed = String(value[i]['_rawData'][0])
+            
+            intakeSheet.push((unparsed.split("https://drive.google.com/file/d/")[1]).split("/view?usp=sharing")[0])
+          }
+          return intakeSheet
+          
+        }).then((finalArray) => {
+            unfilteredArray = finalArray
+            //slice notation includes start, does not include end, [x, y)
+            while(unfilteredArray.length > 2)
+            {
+              var groupingIndex = getRandomInt(3)
+              
+              filteredArray.push(unfilteredArray.slice(0, groupingIndex))
+              unfilteredArray = unfilteredArray.slice(groupingIndex)
+              
+            }
+            if(unfilteredArray.length > 0)
+            {
+              filteredArray.push(unfilteredArray)
+            }
+
+            renderIntake = []
+
+            for(var i = 0; i < filteredArray.length; i++)
+            {
+              for(var j = 0; j < filteredArray[i].length; j++)
+              {
+                renderIntake.push(filteredArray[i].length + filteredArray[i][j])
+              }
+            }
+          this.setState({images: renderIntake})});
 
 
       } catch (e) {
@@ -424,6 +427,7 @@ class Home extends React.Component {
             <i>{this.state.mailingListHeader}</i>
             <br></br>
             </p>
+            <br></br>
             <div class="element" style={{marginTop: '5px'}}>
                 <p className="subheader"><input placeholder={this.state.mailingPlaceholder} type="text" id="mailingListInput" onKeyPress={e => this.submitMailingList(e)}/></p>
               </div>
