@@ -11,6 +11,10 @@
     padding-top: '5px' !important;
 }
 
+input {
+    margin-left: 40px !important;
+}
+
 .submitArrow {
     margin-left: 5px;
     transform: rotate(180deg);
@@ -198,6 +202,10 @@ iframe {
         transform: rotate(180deg);
         width: 25px;
         height: auto;
+    }
+
+    input {
+        margin-left: 25px !important;
     }
 
     html {

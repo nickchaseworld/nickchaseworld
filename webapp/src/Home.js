@@ -27,6 +27,7 @@ var settings = {
   headerLineOne: null,
   headerLineTwo: null,
   mailingListHeader: null,
+  mailingPlaceholder: null,
 };
 
 const SPREADSHEET_ID = "1HWPDbItdCiM973f9z3nc3HuTeV0gaB6UwZp2o8lgzOU";
@@ -61,13 +62,73 @@ class Home extends React.Component {
       soundcloud: null,
       homePageImage: null,
       textIdx: 0,
-      currentWord: null,
     };
 
     this.submitWord = this.submitWord.bind(this)
     this.submitWordAlt = this.submitWordAlt.bind(this)
+
+    this.submitMailingList = this.submitMailingList.bind(this)
+    this.submitMailingListAlt = this.submitMailingListAlt.bind(this)
     
   } 
+
+  submitMailingList = (wordInput) => {
+    //console.log(wordInput.key )
+    if(wordInput.key === "Enter")
+    {
+      if(wordInput.target.value === "")
+      {
+        alert("that's empty! try again.")
+      }
+      else
+      {
+
+        doc.useServiceAccountAuth({
+          client_email: CLIENT_EMAIL,
+          private_key: PRIVATE_KEY,
+        });
+    
+        // loads document properties and worksheets-
+         doc.loadInfo();
+        
+        var sheet = doc.sheetsById["1051245958"];
+        sheet.addRows([
+          { Entry: wordInput.target.value}])
+           
+        alert("thanks for joining!\nlove,\n    Nick Chase")
+        wordInput.target.value = ""
+      }
+
+    }
+    
+  }
+
+  submitMailingListAlt = () => {
+    var val = document.getElementById("mailingListInput").value
+    if(val === "")
+      {
+        alert("that's empty! try again.")
+      }
+      else
+      {
+
+        doc.useServiceAccountAuth({
+          client_email: CLIENT_EMAIL,
+          private_key: PRIVATE_KEY,
+        });
+    
+        // loads document properties and worksheets-
+         doc.loadInfo();
+        
+        var sheet = doc.sheetsById["1051245958"];
+        sheet.addRows([
+          { Entry: val}])
+           
+        alert("your response has been submitted.\nlove,\n    Nick Chase")
+        document.getElementById("mailingListInput").value = ""
+      }
+
+  }
 
   submitWordAlt = () => {
     var val = document.getElementById("wordToSubmit").value
@@ -97,7 +158,6 @@ class Home extends React.Component {
 
   submitWord = (wordInput) => {
     //console.log(wordInput.key )
-    this.setState({currentWord: wordInput.target.value})
     if(wordInput.key === "Enter")
     {
       if(wordInput.target.value === "")
@@ -267,7 +327,7 @@ class Home extends React.Component {
           //alert(miscSheet)
           return miscSheet
           
-        }).then((finalArray) => {this.setState({headerLineOne: finalArray[0], headerLineTwo: finalArray[1], mailingListHeader: finalArray[2]})});
+        }).then((finalArray) => {this.setState({headerLineOne: finalArray[0], headerLineTwo: finalArray[1], mailingListHeader: finalArray[2], mailingPlaceholder: finalArray[3]})});
 
 
 
@@ -357,6 +417,28 @@ class Home extends React.Component {
           </center>
           <br></br>
           <center>
+          <br></br>
+            <br></br>
+            <br></br>
+          <p className="subheader">
+            <i>{this.state.mailingListHeader}</i>
+            <br></br>
+            </p>
+            <div class="element" style={{marginTop: '5px'}}>
+                <p className="subheader"><input placeholder={this.state.mailingPlaceholder} type="text" id="mailingListInput" onKeyPress={e => this.submitMailingList(e)}/></p>
+              </div>
+            <div class="element">
+              <div className="submitArrow">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" onClick={e => this.submitMailingListAlt(e)}>
+                  <title/>
+                  <path d="M12,1A11,11,0,1,0,23,12,11,11,0,0,0,12,1Zm6,12H8.41l2.29,2.29a1,1,0,1,1-1.41,1.41l-4-4a1,1,0,0,1,0-1.41l4-4a1,1,0,0,1,1.41,1.41L8.41,11H18a1,1,0,0,1,0,2Z"/>
+                </svg>
+              </div>
+           
+          </div>
+            <br></br>
+            <br></br>
+            <br></br>
             <br></br>
             <br></br>
             <Clock format={'dddd'} ticking={true} timezone={'US/Eastern'} className="dayOfWeek" /> 
