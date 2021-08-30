@@ -66,6 +66,7 @@ class Home extends React.Component {
       wordAccept: null,
       mailReject: null,
       mailAccept: null,
+      footer: null,
     };
 
     this.submitWord = this.submitWord.bind(this)
@@ -201,6 +202,8 @@ class Home extends React.Component {
           client_email: CLIENT_EMAIL,
           private_key: PRIVATE_KEY,
         });
+
+        
     
         // loads document properties and worksheets-
         await doc.loadInfo();
@@ -226,6 +229,21 @@ class Home extends React.Component {
           finalArray[0] = "_____"
           this.setState({words: finalArray})    
         });
+
+        var sheet = doc.sheetsById["1952798230"];
+        var row = sheet.getRows();
+    
+        var miscSheet = []
+        //rows for home page
+        row.then((value) => {
+          for(var i = 0; i < value.length; i++)
+          {
+            miscSheet.push(String(value[i]['_rawData'][1]))
+            
+          }
+          return miscSheet
+          
+        }).then((finalArray) => {this.setState({homePageImage: finalArray[0], headerLineOne: finalArray[1], headerLineTwo: finalArray[2], mailingListHeader: finalArray[3], mailingPlaceholder: finalArray[4], wordReject: finalArray[5], wordAccept: finalArray[6], mailReject: finalArray[7], mailAccept: finalArray[8], footer: finalArray[9]})});
         
 
         var sheet = doc.sheetsById["2063393064"];
@@ -275,21 +293,6 @@ class Home extends React.Component {
           return streamSheet
           
         }).then((finalArray) => {this.setState({spotify: finalArray[0], appleMusic: finalArray[1], soundcloud: finalArray[2]})});
-
-        var sheet = doc.sheetsById["1952798230"];
-        var row = sheet.getRows();
-    
-        var miscSheet = []
-        //rows for home page
-        row.then((value) => {
-          for(var i = 0; i < value.length; i++)
-          {
-            miscSheet.push(String(value[i]['_rawData'][1]))
-            
-          }
-          return miscSheet
-          
-        }).then((finalArray) => {this.setState({headerLineOne: finalArray[0], headerLineTwo: finalArray[1], mailingListHeader: finalArray[2], mailingPlaceholder: finalArray[3], wordReject: finalArray[4], wordAccept: finalArray[5], mailReject: finalArray[6], mailAccept: finalArray[7]})});
         
 
         var sheet = doc.sheetsById["950251716"];
@@ -532,7 +535,7 @@ class Home extends React.Component {
         <br></br>
         <br></br>
         <br></br>
-        <center><p className="footer">nick chase</p></center>
+        <center><p className="footer">{this.state.footer}</p></center>
         <br></br>
         </div>
 
