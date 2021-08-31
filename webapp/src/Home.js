@@ -225,9 +225,8 @@ class Home extends React.Component {
           
         }).then((finalArray) => {
           //console.log((finalArray[0].split("https://drive.google.com/file/d/")[1]).split("/view?usp=sharing")[0])
-          this.setState({homePageImage: (finalArray[0].split("https://drive.google.com/file/d/")[1]).split("/view?usp=sharing")[0]})
-          finalArray[0] = "_____"
-          this.setState({words: finalArray})    
+          
+          this.setState({words: (["_____"]).concat(finalArray)})    
         });
 
         var sheet = doc.sheetsById["1952798230"];
@@ -243,7 +242,7 @@ class Home extends React.Component {
           }
           return miscSheet
           
-        }).then((finalArray) => {this.setState({homePageImage: finalArray[0], headerLineOne: finalArray[1], headerLineTwo: finalArray[2], mailingListHeader: finalArray[3], mailingPlaceholder: finalArray[4], wordReject: finalArray[5], wordAccept: finalArray[6], mailReject: finalArray[7], mailAccept: finalArray[8], footer: finalArray[9]})});
+        }).then((finalArray) => {this.setState({homePageImage: (finalArray[0].split("https://drive.google.com/file/d/")[1]).split("/view?usp=sharing")[0], headerLineOne: finalArray[1], headerLineTwo: finalArray[2], mailingListHeader: finalArray[3], mailingPlaceholder: finalArray[4], wordReject: finalArray[5], wordAccept: finalArray[6], mailReject: finalArray[7], mailAccept: finalArray[8], footer: finalArray[9]})});
         
 
         var sheet = doc.sheetsById["2063393064"];
@@ -398,7 +397,6 @@ class Home extends React.Component {
             <p className="subheader">{this.state.headerLineOne}</p>
             <p className="subheader">{this.state.headerLineTwo} {textThatChanges}</p>
             <br></br>
-            
               <div class="element">
                 <p className="subheader"><input type="text" id="wordToSubmit" onKeyPress={e => this.submitWord(e)}/></p>
               </div>
@@ -411,7 +409,7 @@ class Home extends React.Component {
               </div>
            
           </div>
-            
+            <br></br>
             
             <br></br>
             {this.state.homePageImage !== null && <img src={"https://drive.google.com/uc?export=view&id=" + this.state.homePageImage} alt="nickchase"></img>}

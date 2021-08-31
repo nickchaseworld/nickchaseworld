@@ -12,6 +12,7 @@
 }
 
 input {
+    border-radius: 10px !important;
     padding-left: 10px;
     margin-left: 40px !important;
 }
@@ -206,6 +207,7 @@ iframe {
     }
 
     input {
+        border-radius: 8px !important;
         padding-left: 10px;
         margin-left: 25px !important;
     }
