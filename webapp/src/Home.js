@@ -86,7 +86,6 @@ class Home extends React.Component {
   } 
 
   submitMailingList = (wordInput) => {
-    //console.log(wordInput.key )
     if(wordInput.key === "Enter")
     {
       if(wordInput.target.value === "")
@@ -102,7 +101,7 @@ class Home extends React.Component {
         });
     
         // loads document properties and worksheets-
-         doc.loadInfo();
+        doc.loadInfo();
         
         var sheet = doc.sheetsById["1051245958"];
         sheet.addRows([
@@ -124,14 +123,13 @@ class Home extends React.Component {
       }
       else
       {
-
         doc.useServiceAccountAuth({
           client_email: CLIENT_EMAIL,
           private_key: PRIVATE_KEY,
         });
     
         // loads document properties and worksheets-
-         doc.loadInfo();
+        doc.loadInfo();
         
         var sheet = doc.sheetsById["1051245958"];
         sheet.addRows([
@@ -151,14 +149,13 @@ class Home extends React.Component {
       }
       else
       {
-
         doc.useServiceAccountAuth({
           client_email: CLIENT_EMAIL,
           private_key: PRIVATE_KEY,
         });
     
         // loads document properties and worksheets-
-         doc.loadInfo();
+        doc.loadInfo();
         
         var sheet = doc.sheetsById["0"];
         sheet.addRows([
@@ -272,21 +269,10 @@ class Home extends React.Component {
             {
               this.setState({alertVideo: finalArray[14]})
             }
-            console.log(finalArray)
-            this.setState({alertTextLineOne: finalArray[15], alertTextLineTwo: finalArray[16], alertTextColor: finalArray[17]})
-            console.log(this.state.alertSongImage)
-            console.log(this.state.alertSongSpotify)
-            console.log(this.state.alertSongAppleMusic)
-            console.log(this.state.alertSongSpotify)
-            console.log(this.state.alertVideo)
-            console.log(this.state.alertTextLineOne)
-            console.log(this.state.alertTextLineTwo)
-            console.log(this.state.alertTextColor)
+            this.setState({alertTextLineOne: finalArray[15], alertTextLineTwo: finalArray[16], alertTextColor: finalArray[17]})    
           }
-        
       });
-        
-
+      
         var sheet = doc.sheetsById["2063393064"];
         var row = sheet.getRows();
     
