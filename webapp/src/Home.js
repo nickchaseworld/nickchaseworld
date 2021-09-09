@@ -436,7 +436,7 @@ class Home extends React.Component {
 
       {this.state.page === "HOME" && <div className="pageContainer">
           <center> 
-            {this.state.alertSongImage !== null && <div>
+            {((this.state.alertSongImage !== null) && (((this.state.alertSongSpotify !== null) && (this.state.alertSongAppleMusic !== null))|| (this.state.alertSongSoundcloud !== null))) && <div>
 
               <img src={"https://drive.google.com/uc?export=view&id=" + this.state.alertSongImage} className="alertImage" alt="nickchase"></img>
               <br></br>
@@ -476,20 +476,17 @@ class Home extends React.Component {
                     
                     }
                     
-                  
-                  
-                  {this.state.alertVideo !== null && <div>
-                    <br></br>
-                    <iframe src={this.state.alertVideo} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                      
-                  </div>}
                   <br></br>
                   <br></br>
                   <p className="subheader" style={{color: this.state.alertTextColor}}>{this.state.alertTextLineOne}</p>
                   <p className="subheader" style={{color: this.state.alertTextColor}}>{this.state.alertTextLineTwo}</p>
-
-                
                 </div>
+
+                {this.state.alertVideo !== null && <div>
+                    <br></br>
+                    <iframe src={this.state.alertVideo} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                      
+                  </div>}
                 
                 
             
