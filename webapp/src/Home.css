@@ -7,6 +7,11 @@
     font-weight: 900 !important;
 }
 
+.alertImage {
+    border-radius: 20px;
+    width: 40%;
+}
+
 .svgPlace {
     padding-top: '5px' !important;
 }
@@ -195,6 +200,10 @@ iframe {
 
 @media only screen and (min-width: 0px) and (max-width: 800px)
 {
+    .alertImage {
+        border-radius: 10px;
+        width: 90%;
+    }
 
     .svg {
         padding-top: '0px';

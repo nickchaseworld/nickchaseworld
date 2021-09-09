@@ -67,6 +67,14 @@ class Home extends React.Component {
       mailReject: null,
       mailAccept: null,
       footer: null,
+      alertSongImage: null,
+      alertSongSpotify: null,
+      alertSongAppleMusic: null,
+      alertSongSoundcloud: null,
+      alertVideo: null,
+      alertTextLineOne: null,
+      alertTextLineTwo: null,
+      alertTextColor: '#000000',
     };
 
     this.submitWord = this.submitWord.bind(this)
@@ -237,12 +245,46 @@ class Home extends React.Component {
         row.then((value) => {
           for(var i = 0; i < value.length; i++)
           {
-            miscSheet.push(String(value[i]['_rawData'][1]))
+            if(String(value[i]['_rawData'][1]) === 'undefined')
+            {
+              miscSheet.push(null)
+            }
+            else
+            {
+              miscSheet.push(String(value[i]['_rawData'][1]))
+            }
             
           }
           return miscSheet
           
-        }).then((finalArray) => {this.setState({homePageImage: (finalArray[0].split("https://drive.google.com/file/d/")[1]).split("/view?usp=sharing")[0], headerLineOne: finalArray[1], headerLineTwo: finalArray[2], mailingListHeader: finalArray[3], mailingPlaceholder: finalArray[4], wordReject: finalArray[5], wordAccept: finalArray[6], mailReject: finalArray[7], mailAccept: finalArray[8], footer: finalArray[9]})});
+        }).then((finalArray) => {
+          this.setState({
+            homePageImage: (finalArray[0].split("https://drive.google.com/file/d/")[1]).split("/view?usp=sharing")[0], headerLineOne: finalArray[1], headerLineTwo: finalArray[2], mailingListHeader: finalArray[3], mailingPlaceholder: finalArray[4], wordReject: finalArray[5], wordAccept: finalArray[6], mailReject: finalArray[7], mailAccept: finalArray[8], footer: finalArray[9]})
+          
+          //a catch all to only code text color and thing once
+          if((finalArray[10] !== null) || (finalArray[14] !== null))
+          {
+            if(finalArray[10] !== null)
+            {
+              this.setState({alertSongImage: (finalArray[10].split("https://drive.google.com/file/d/")[1]).split("/view?usp=sharing")[0], alertSongSpotify: finalArray[11], alertSongAppleMusic: finalArray[12], alertSongSoundcloud: finalArray[13]})
+            }
+            if(finalArray[14] !== null)
+            {
+              this.setState({alertVideo: finalArray[14]})
+            }
+            console.log(finalArray)
+            this.setState({alertTextLineOne: finalArray[15], alertTextLineTwo: finalArray[16], alertTextColor: finalArray[17]})
+            console.log(this.state.alertSongImage)
+            console.log(this.state.alertSongSpotify)
+            console.log(this.state.alertSongAppleMusic)
+            console.log(this.state.alertSongSpotify)
+            console.log(this.state.alertVideo)
+            console.log(this.state.alertTextLineOne)
+            console.log(this.state.alertTextLineTwo)
+            console.log(this.state.alertTextColor)
+          }
+        
+      });
         
 
         var sheet = doc.sheetsById["2063393064"];
@@ -394,6 +436,41 @@ class Home extends React.Component {
 
       {this.state.page === "HOME" && <div className="pageContainer">
           <center> 
+            {this.state.alertSongImage !== null && <div>
+
+              <img src={"https://drive.google.com/uc?export=view&id=" + this.state.alertSongImage} className="alertImage" alt="nickchase"></img>
+              <br></br>
+              
+                <div style={{marginTop: '10px', marginBottom: '10px'}}>
+                  
+                  {this.state.alertSongSpotify !== null && <svg width="73" height="40" viewBox="0 0 73 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill={this.state.alertTextColor} onClick={() => window.open(this.state.alertSongSpotify, '_blank').focus()} d="M30.7788 18.2895C24.5828 14.6098 14.3627 14.2716 8.44785 16.0667C7.49776 16.3549 6.49344 15.8188 6.20578 14.8689C5.91795 13.9185 6.4535 12.9147 7.40394 12.626C14.194 10.565 25.4809 10.963 32.6139 15.1972C33.4685 15.7045 33.7484 16.8078 33.2421 17.6607C32.7353 18.515 31.631 18.7968 30.7786 18.2895H30.7788ZM30.5759 23.7394C30.1412 24.4449 29.2188 24.6661 28.5144 24.233C23.349 21.0578 15.472 20.1379 9.36075 21.993C8.56835 22.2322 7.73119 21.7857 7.49053 20.9945C7.3758 20.6142 7.41657 20.2038 7.6039 19.8535C7.79123 19.5032 8.10983 19.2414 8.48985 19.1256C15.471 17.007 24.1499 18.033 30.0828 21.6791C30.7873 22.1129 31.009 23.0357 30.5759 23.7394ZM28.2238 28.9734C28.1419 29.1079 28.0343 29.2249 27.9072 29.3177C27.7801 29.4106 27.6359 29.4774 27.4828 29.5145C27.3298 29.5515 27.171 29.558 27.0155 29.5336C26.86 29.5091 26.7108 29.4543 26.5765 29.3721C22.0628 26.6134 16.3813 25.9904 9.69042 27.5188C9.53711 27.5538 9.37839 27.5583 9.22334 27.532C9.06828 27.5057 8.91993 27.4492 8.78675 27.3655C8.65356 27.2819 8.53816 27.1728 8.44714 27.0446C8.35611 26.9163 8.29125 26.7714 8.25624 26.6181C8.22099 26.4647 8.21634 26.3059 8.24256 26.1507C8.26878 25.9956 8.32535 25.8471 8.40903 25.7138C8.49271 25.5806 8.60186 25.4651 8.73022 25.3741C8.85859 25.2831 9.00365 25.2183 9.1571 25.1834C16.4791 23.5098 22.7598 24.23 27.8263 27.326C27.9606 27.408 28.0774 27.5157 28.1701 27.6429C28.2628 27.7701 28.3295 27.9143 28.3664 28.0673C28.4034 28.2203 28.4098 28.3791 28.3853 28.5345C28.3609 28.69 28.3061 28.8391 28.224 28.9734H28.2238ZM19.4082 1.24902C8.79283 1.24902 0.186768 9.85474 0.186768 20.4705C0.186768 31.0872 8.79283 39.6926 19.4084 39.6926C30.0245 39.6926 38.6304 31.0872 38.6304 20.4705C38.6304 9.85492 30.0246 1.24902 19.4084 1.24902"/>
+                    <path fill={this.state.alertTextColor} onClick={() => window.open(this.state.alertSongAppleMusic, '_blank').focus()} d="M63.3574 6.14141C62.0339 7.67677 59.9541 9.0202 57.8743 8.82828C57.4962 6.52525 58.6306 4.22222 59.765 2.87879C61.0885 1.15152 63.3574 0 65.2481 0C65.4372 2.11111 64.6809 4.41414 63.3574 6.14141ZM65.2481 9.21212C66.3825 9.21212 69.7858 9.59596 72.0546 13.0505C71.8656 13.2424 68.0842 15.5455 68.0842 20.3434C68.0842 26.101 73 28.0202 73 28.0202C73 28.2121 72.2437 30.7071 70.5421 33.3939C69.0295 35.697 67.3279 38 64.8699 38C62.412 38 61.6557 36.4646 58.8197 36.4646C55.9836 36.4646 55.0382 38 52.7694 38C50.3115 38 48.4208 35.5051 46.9082 33.202C43.694 28.404 41.2361 19.7677 44.6393 14.0101C46.1519 11.1313 49.177 9.21212 52.2022 9.21212C54.6601 9.21212 56.929 10.9394 58.2525 10.9394C59.576 10.9394 62.2229 9.0202 65.2481 9.21212Z"/>
+                  </svg>}
+                  
+                  {this.state.alertVideo !== null && <div>
+                    <br></br>
+                    <iframe src={this.state.alertVideo} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                      
+                  </div>}
+                  <br></br>
+                  <br></br>
+                  <p className="subheader" style={{color: this.state.alertTextColor}}>{this.state.alertTextLineOne}</p>
+                  <p className="subheader" style={{color: this.state.alertTextColor}}>{this.state.alertTextLineTwo}</p>
+
+                
+                </div>
+                
+                
+            
+
+                <br></br>
+                <br></br>
+              </div>}
+
+
+              
+            
             <p className="subheader">{this.state.headerLineOne}</p>
             <p className="subheader">{this.state.headerLineTwo} {textThatChanges}</p>
             <br></br>
@@ -424,7 +501,7 @@ class Home extends React.Component {
           <br></br>
             <br></br>
             <br></br>
-          <p className="subheader">
+          {/*<p className="subheader">
             <i>{this.state.mailingListHeader}</i>
             <br></br>
             </p>
@@ -440,9 +517,9 @@ class Home extends React.Component {
                 </svg>
               </div>
            
-          </div>
+    </div>
             <br></br>
-            <br></br>
+            <br></br>*/}
             <br></br>
             <br></br>
             <br></br>
