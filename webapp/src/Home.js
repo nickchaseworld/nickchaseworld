@@ -75,6 +75,7 @@ class Home extends React.Component {
       alertTextLineOne: null,
       alertTextLineTwo: null,
       alertTextColor: '#000000',
+      showPage: false,
     };
 
     this.submitWord = this.submitWord.bind(this)
@@ -272,7 +273,7 @@ class Home extends React.Component {
             this.setState({alertTextLineOne: finalArray[15], alertTextLineTwo: finalArray[16], alertTextColor: finalArray[17]})    
           }
       });
-      
+
         var sheet = doc.sheetsById["2063393064"];
         var row = sheet.getRows();
     
@@ -368,6 +369,7 @@ class Home extends React.Component {
         console.error('Error: ', e);
       }
       
+      
 
       
     };
@@ -380,7 +382,7 @@ class Home extends React.Component {
 
     //console.log(sheetsToStates().then((values) => {console.log(values)}))
     //this.setState({words: sheetsToStates})
-      
+    this.setState({showPage: true})
     
   }
 
@@ -400,7 +402,7 @@ class Home extends React.Component {
   {  
     let textThatChanges = this.state.words[this.state.textIdx % this.state.words.length];
 
-    return (   
+    return this.state.showPage === true && (   
       <div className="contentContainer"> {/* DO NOT REMOVE THIS DIV COMPONENT*/}
         <br></br>
         <br></br>
@@ -427,7 +429,7 @@ class Home extends React.Component {
               <img src={"https://drive.google.com/uc?export=view&id=" + this.state.alertSongImage} className="alertImage" alt="nickchase"></img>
               <br></br>
               
-                <div>
+                <div style={{marginTop: '10px'}}>
                   
                   {((this.state.alertSongSpotify !== null) && (this.state.alertSongAppleMusic !== null) && (this.state.alertSongSoundcloud === null)) && <svg width="73" height="40" viewBox="0 0 73 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path fill={this.state.alertTextColor} onClick={() => window.open(this.state.alertSongSpotify, '_blank').focus()} d="M30.7788 18.2895C24.5828 14.6098 14.3627 14.2716 8.44785 16.0667C7.49776 16.3549 6.49344 15.8188 6.20578 14.8689C5.91795 13.9185 6.4535 12.9147 7.40394 12.626C14.194 10.565 25.4809 10.963 32.6139 15.1972C33.4685 15.7045 33.7484 16.8078 33.2421 17.6607C32.7353 18.515 31.631 18.7968 30.7786 18.2895H30.7788ZM30.5759 23.7394C30.1412 24.4449 29.2188 24.6661 28.5144 24.233C23.349 21.0578 15.472 20.1379 9.36075 21.993C8.56835 22.2322 7.73119 21.7857 7.49053 20.9945C7.3758 20.6142 7.41657 20.2038 7.6039 19.8535C7.79123 19.5032 8.10983 19.2414 8.48985 19.1256C15.471 17.007 24.1499 18.033 30.0828 21.6791C30.7873 22.1129 31.009 23.0357 30.5759 23.7394ZM28.2238 28.9734C28.1419 29.1079 28.0343 29.2249 27.9072 29.3177C27.7801 29.4106 27.6359 29.4774 27.4828 29.5145C27.3298 29.5515 27.171 29.558 27.0155 29.5336C26.86 29.5091 26.7108 29.4543 26.5765 29.3721C22.0628 26.6134 16.3813 25.9904 9.69042 27.5188C9.53711 27.5538 9.37839 27.5583 9.22334 27.532C9.06828 27.5057 8.91993 27.4492 8.78675 27.3655C8.65356 27.2819 8.53816 27.1728 8.44714 27.0446C8.35611 26.9163 8.29125 26.7714 8.25624 26.6181C8.22099 26.4647 8.21634 26.3059 8.24256 26.1507C8.26878 25.9956 8.32535 25.8471 8.40903 25.7138C8.49271 25.5806 8.60186 25.4651 8.73022 25.3741C8.85859 25.2831 9.00365 25.2183 9.1571 25.1834C16.4791 23.5098 22.7598 24.23 27.8263 27.326C27.9606 27.408 28.0774 27.5157 28.1701 27.6429C28.2628 27.7701 28.3295 27.9143 28.3664 28.0673C28.4034 28.2203 28.4098 28.3791 28.3853 28.5345C28.3609 28.69 28.3061 28.8391 28.224 28.9734H28.2238ZM19.4082 1.24902C8.79283 1.24902 0.186768 9.85474 0.186768 20.4705C0.186768 31.0872 8.79283 39.6926 19.4084 39.6926C30.0245 39.6926 38.6304 31.0872 38.6304 20.4705C38.6304 9.85492 30.0246 1.24902 19.4084 1.24902"/>
