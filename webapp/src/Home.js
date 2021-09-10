@@ -5,6 +5,7 @@ import Clock from 'react-live-clock';
 import Slider from 'react-slick'
 import 'slick-carousel/slick/slick-theme.css';
 import 'slick-carousel/slick/slick.css';
+import loadingImage from './media/loadingImage.jpg'
 
 import './Home.css';
 
@@ -76,6 +77,7 @@ class Home extends React.Component {
       alertTextLineTwo: null,
       alertTextColor: '#000000',
       showPage: false,
+      imagesAllLoaded: null,
     };
 
     this.submitWord = this.submitWord.bind(this)
@@ -380,9 +382,13 @@ class Home extends React.Component {
       this.setState({ textIdx: currentIdx + 1 });
     }, 3000);
 
+    setTimeout(() => {
+      this.setState({showPage: true});
+  }, 5000);
+
     //console.log(sheetsToStates().then((values) => {console.log(values)}))
     //this.setState({words: sheetsToStates})
-    this.setState({showPage: true})
+    //this.setState({showPage: true})
     
   }
 
@@ -401,8 +407,10 @@ class Home extends React.Component {
   render()
   {  
     let textThatChanges = this.state.words[this.state.textIdx % this.state.words.length];
+      
+    
 
-    return this.state.showPage === true && (   
+    return this.state.showPage === true ? (   
       <div className="contentContainer"> {/* DO NOT REMOVE THIS DIV COMPONENT*/}
         <br></br>
         <br></br>
@@ -424,9 +432,16 @@ class Home extends React.Component {
 
       {this.state.page === "HOME" && <div className="pageContainer">
           <center> 
+          
+
+          {//FULL SCREEN ERROR LOAD, LOCALLY LOADED
+          this.state.imagesAllLoaded === false && <h1>TRY RELOADING THE PAGE</h1>
+          }
             {((this.state.alertSongImage !== null) && (((this.state.alertSongSpotify !== null) && (this.state.alertSongAppleMusic !== null))|| (this.state.alertSongSoundcloud !== null))) && <div>
 
-              <img src={"https://drive.google.com/uc?export=view&id=" + this.state.alertSongImage} className="alertImage" alt="nickchase"></img>
+              <img src={"https://drive.google.com/uc?export=view&id=" + this.state.alertSongImage} className="alertImage" alt="nickchase" onLoad={() => this.setState({imagesAllLoaded: true})} onError={() => this.setState({imagesAllLoaded: false})} ></img>
+              
+              
               <br></br>
               
                 <div style={{marginTop: '10px'}}>
@@ -503,7 +518,7 @@ class Home extends React.Component {
             <br></br>
             
             <br></br>
-            {this.state.homePageImage !== null && <img src={"https://drive.google.com/uc?export=view&id=" + this.state.homePageImage} alt="nickchase"></img>}
+            {this.state.homePageImage !== null && <img src={"https://drive.google.com/uc?export=view&id=" + this.state.homePageImage} alt="nickchase" onLoad={() => this.setState({imagesAllLoaded: true})} onError={() => this.setState({imagesAllLoaded: false})} ></img>}
             <br></br>
             <br></br>
             {this.state.words.map(word => (word != "_____" && <div>
@@ -515,25 +530,6 @@ class Home extends React.Component {
           <br></br>
             <br></br>
             <br></br>
-          {/*<p className="subheader">
-            <i>{this.state.mailingListHeader}</i>
-            <br></br>
-            </p>
-            <br></br>
-            <div class="element" style={{marginTop: '5px'}}>
-                <p className="subheader"><input placeholder={this.state.mailingPlaceholder} type="text" id="mailingListInput" onKeyPress={e => this.submitMailingList(e)}/></p>
-              </div>
-            <div class="element">
-              <div className="submitArrow">
-                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" onClick={e => this.submitMailingListAlt(e)}>
-                  <title/>
-                  <path d="M12,1A11,11,0,1,0,23,12,11,11,0,0,0,12,1Zm6,12H8.41l2.29,2.29a1,1,0,1,1-1.41,1.41l-4-4a1,1,0,0,1,0-1.41l4-4a1,1,0,0,1,1.41,1.41L8.41,11H18a1,1,0,0,1,0,2Z"/>
-                </svg>
-              </div>
-           
-    </div>
-            <br></br>
-            <br></br>*/}
             <br></br>
             <br></br>
             <br></br>
@@ -561,7 +557,7 @@ class Home extends React.Component {
               item[0] === '1' ? 
                 <div className="column1">
                   <center>
-                    <img src={"https://drive.google.com/uc?export=view&id=" + item.slice(1)} style={{width: '100%'}}></img>
+                    <img src={"https://drive.google.com/uc?export=view&id=" + item.slice(1)} style={{width: '100%'}} onLoad={() => this.setState({imagesAllLoaded: true})} onError={() => this.setState({imagesAllLoaded: false})} ></img>
                     <br></br>
                     <br></br>
                   </center>
@@ -569,7 +565,7 @@ class Home extends React.Component {
               : item[0] === '2' ? 
                   <div className="column2">
                     <center>
-                      <img src={"https://drive.google.com/uc?export=view&id=" + item.slice(1)} style={{width: '100%'}}></img>
+                      <img src={"https://drive.google.com/uc?export=view&id=" + item.slice(1)} style={{width: '100%'}} onLoad={() => this.setState({imagesAllLoaded: true})} onError={() => this.setState({imagesAllLoaded: false})} ></img>
                       <br></br>
                     <br></br>
                     </center>
@@ -577,7 +573,7 @@ class Home extends React.Component {
               : item[0] === '3' ? 
                 <div className="column3">
                   <center>
-                    <img src={"https://drive.google.com/uc?export=view&id=" + item.slice(1)} style={{width: '100%'}}></img>
+                    <img src={"https://drive.google.com/uc?export=view&id=" + item.slice(1)} style={{width: '100%'}} onLoad={() => this.setState({imagesAllLoaded: true})} onError={() => this.setState({imagesAllLoaded: false})} ></img>
                     <br></br>
                     <br></br>
                     </center>
@@ -614,7 +610,7 @@ class Home extends React.Component {
           
         <Slider {...settings}>
           {this.state.books.map((item, index) => <div className="bookSlide">
-            <img src={"https://drive.google.com/uc?export=view&id=" + item[0]}></img>
+            <img src={"https://drive.google.com/uc?export=view&id=" + item[0]} onLoad={() => this.setState({imagesAllLoaded: true})} onError={() => this.setState({imagesAllLoaded: false})} ></img>
                   <br></br>
                   <center><p className="bookDescription">{item[1]}</p></center>
           </div>)}
@@ -628,7 +624,7 @@ class Home extends React.Component {
         <br></br>
         </div>
 
-      )
+      ) : (<div className="loadingDiv"><img src={loadingImage} className="loadingScreen"></img></div>)
   }
 }
 export default Home;

@@ -7,6 +7,30 @@
     font-weight: 900 !important;
 }
 
+@keyframes toColor {
+    0%    { -webkit-filter: grayscale(100%); filter: grayscale(100%); }
+    50%   { -webkit-filter: grayscale(75%); filter: grayscale(75%); }
+    65%   { -webkit-filter: grayscale(50%); filter: grayscale(50%); }
+    85%   { -webkit-filter: grayscale(25%); filter: grayscale(25%); }
+    100%  { -webkit-filter: grayscale(0%); filter: grayscale(0%); }
+}
+
+.loadingDiv {
+    background-color: red;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.loadingScreen {
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 100vw;
+    overflow: none;
+    animation: toColor 5s;
+}
+
 .alertImage {
     border-radius: 20px;
     width: 40%;
@@ -200,6 +224,22 @@ iframe {
 
 @media only screen and (min-width: 0px) and (max-width: 800px)
 {
+
+    .loadingDiv {
+        background-color: red;
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
+    }
+    
+    .loadingScreen {
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 100vh;
+        overflow: none;
+    }
+
     .alertImage {
         border-radius: 10px;
         width: 90%;
