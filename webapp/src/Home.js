@@ -78,6 +78,11 @@ class Home extends React.Component {
       alertTextColor: '#000000',
       showPage: false,
       imagesAllLoaded: null,
+      one: null,
+      two: null,
+      three: null,
+      four: null,
+      five: null,
     };
 
     this.submitWord = this.submitWord.bind(this)
@@ -215,6 +220,21 @@ class Home extends React.Component {
     
         // loads document properties and worksheets-
         await doc.loadInfo();
+
+        var sheet = doc.sheetsById["1972155988"];
+        var row = sheet.getRows();
+    
+        var streamSheet = []
+        //rows for home page
+        row.then((value) => {
+          for(var i = 0; i < value.length; i++)
+          {
+            streamSheet.push(String(value[i]['_rawData'][0]))
+            
+          }
+          return streamSheet
+          
+        }).then((finalArray) => {this.setState({one: finalArray[0], two: finalArray[1], three: finalArray[2], four: finalArray[3], five: finalArray[4]})});
         
         var sheet = doc.sheetsById["0"];
         var row = sheet.getRows();
