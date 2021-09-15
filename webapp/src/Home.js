@@ -48,7 +48,7 @@ class Home extends React.Component {
   constructor() {
     super();
     this.state = {
-      page: "HOME",
+      page: "DEFAULT",
       musicProvider: "Spotify",
       words: [],
       images: [],
@@ -224,15 +224,15 @@ class Home extends React.Component {
         var sheet = doc.sheetsById["1972155988"];
         var row = sheet.getRows();
     
-        var streamSheet = []
+        var pagesSheet = []
         //rows for home page
         row.then((value) => {
           for(var i = 0; i < value.length; i++)
           {
-            streamSheet.push(String(value[i]['_rawData'][0]))
+            pagesSheet.push(String(value[i]['_rawData'][0]))
             
           }
-          return streamSheet
+          return pagesSheet
           
         }).then((finalArray) => {this.setState({one: finalArray[0], two: finalArray[1], three: finalArray[2], four: finalArray[3], five: finalArray[4]})});
         
@@ -440,17 +440,17 @@ class Home extends React.Component {
         <Navbar bg="white" variant="light">
         <Container className="navBarContainer">
           <Nav onClick={e => e.preventDefault()} defaultActiveKey="HOME">
-            &emsp;&emsp;<Nav.Link href="STREAM" onClick={e => this.pageSelect(e)}>STREAM</Nav.Link>&emsp;&emsp;
-            &emsp;&emsp;<Nav.Link href="VIDEOS" onClick={e => this.pageSelect(e)}>VIDEOS</Nav.Link>&emsp;&emsp;
-            &emsp;&emsp;<Nav.Link href="HOME" onClick={e => this.pageSelect(e)} >HOME</Nav.Link>&emsp;&emsp;
-            &emsp;&emsp;<Nav.Link href="INTAKE" onClick={e => this.pageSelect(e)}>INTAKE</Nav.Link>&emsp;&emsp;
-            &emsp;&emsp;<Nav.Link href="READING" onClick={e => this.pageSelect(e)}>READING</Nav.Link>&emsp;&emsp;
+            &emsp;&emsp;<Nav.Link href="STREAM" onClick={e => this.pageSelect(e)}>{this.state.one}</Nav.Link>&emsp;&emsp;
+            &emsp;&emsp;<Nav.Link href="VIDEOS" onClick={e => this.pageSelect(e)}>{this.state.two}</Nav.Link>&emsp;&emsp;
+            &emsp;&emsp;<Nav.Link href="HOME" onClick={e => this.pageSelect(e)} >{this.state.three}</Nav.Link>&emsp;&emsp;
+            &emsp;&emsp;<Nav.Link href="INTAKE" onClick={e => this.pageSelect(e)}>{this.state.four}</Nav.Link>&emsp;&emsp;
+            &emsp;&emsp;<Nav.Link href="READING" onClick={e => this.pageSelect(e)}>{this.state.five}</Nav.Link>&emsp;&emsp;
           </Nav>
         </Container>
       </Navbar> {/**/}
       <br></br>
 
-      {this.state.page === "HOME" && <div className="pageContainer">
+      {((this.state.page === this.state.three) || (this.state.page === "DEFAULT")) && <div className="pageContainer">
           <center> 
           
 
@@ -560,7 +560,7 @@ class Home extends React.Component {
           </center>
         </div>}
         
-        {this.state.page === "VIDEOS" && <div className="pageContainer">
+        {this.state.page === this.state.two && <div className="pageContainer">
             <center>
             {this.state.videos.map((item, index) => <div>
               <iframe src={item} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -570,7 +570,7 @@ class Home extends React.Component {
               <br></br>
             </center>
           </div>}
-        {this.state.page === "INTAKE" && <div className="pageContainer">
+        {this.state.page === this.state.four && <div className="pageContainer">
           <div className="row">
 
             {this.state.images.map(item => (
@@ -602,7 +602,7 @@ class Home extends React.Component {
               </div>
           </div>}
 
-        {this.state.page === "STREAM" && <div className="pageContainer">
+        {this.state.page === this.state.one && <div className="pageContainer">
           <center>
             {/*<DropdownButton size="md" id="dropdown-basic-button" title={this.state.musicProvider} onClick={e => e.preventDefault()} style={{margin: '0 auto', marginTop: '10px'}}>
                 <Dropdown.Item onClick={e => this.musicProviderSelect(e)}>Spotify</Dropdown.Item>
@@ -626,7 +626,7 @@ class Home extends React.Component {
         {this.state.musicProvider === "Soundcloud" && <div></div>}*/}
           </center>
           </div>}
-        {this.state.page === "READING" && <div className="pageContainer">
+        {this.state.page === this.state.five && <div className="pageContainer">
           
         <Slider {...settings}>
           {this.state.books.map((item, index) => <div className="bookSlide">
