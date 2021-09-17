@@ -3,7 +3,7 @@ import './App.css';
 
 
 
-class Redirect extends React.Component { 
+class QR extends React.Component { 
 
   constructor() {
     super();
@@ -36,4 +36,4 @@ class Redirect extends React.Component {
       
   }
 }
-export default Redirect;
+export default QR;

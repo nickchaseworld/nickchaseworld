@@ -1,12 +1,11 @@
 import React from 'react';
-import {Navbar, Nav, Container, DropdownButton, Dropdown} from 'react-bootstrap'
+import {Navbar, Nav, Container/*, DropdownButton, Dropdown*/} from 'react-bootstrap'
 import { GoogleSpreadsheet } from "google-spreadsheet";
 import Clock from 'react-live-clock';
 import Slider from 'react-slick'
 import 'slick-carousel/slick/slick-theme.css';
 import 'slick-carousel/slick/slick.css';
-import loadingImage from './media/loadingImage.jpg'
-
+import loadingImage from './media/loadingImage.jpg';
 import './Home.css';
 
 
@@ -14,7 +13,7 @@ import './Home.css';
 var unfilteredArray = []
 var filteredArray = []
 var renderIntake = []
-var currentlyReading = []
+//var currentlyReading = []
 
 
 var settings = {
@@ -28,7 +27,7 @@ var settings = {
 };
 
 const SPREADSHEET_ID = "1HWPDbItdCiM973f9z3nc3HuTeV0gaB6UwZp2o8lgzOU";
-const SHEET_ID = "0";
+//const SHEET_ID = "0";
 const CLIENT_EMAIL = "admin-196@nickchaseworld.iam.gserviceaccount.com";
 const PRIVATE_KEY = "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDCsNJUwRp0zL29\nN5aX0u0pOXGUiJPxZplVw5+UdAQ+J/UFz4sWOXe4vU6GIZ1+7hhkHg8l18yGwYae\n4xm3zXy5EgO/ZnqXSe02Faq/v4HSRKmwkX+TOipVhNZceFQ3/jgbvQJsHbBt58zc\nQCMr8z2ehdfpPvXu67FH1QlgYTfWS0onSi6d3xNBWnw9ES680P+Mx32Q8/ldWDpO\nxB4DptFbwQP3DqOomIViX3O4K5UHP3x0qSgXaeH3w5YPob6zizf75Rtw2kpZLvG8\nNkTmFXii5qfaeRSSKXFvfU8KIQlKwpK+tBUvYm5aSmQdCO9LHkk7yOcb2XNttDnT\n49PLJG5RAgMBAAECggEAPtbVvJdrU6G16Dnl+HETLUgmOdvvbG5CNaVjf4YGzI0X\nD94SNYUs+ErZ6n81F4AADWiKWRuTHzednPEOHv5LMGz5GrEYBnbNArTxnNxSKa0R\n3DTKKZoPifTLP6NzA3OhZoqWGpFmncLAo6Jr98aV7/GhY953gLtASEAhu6MFY7vv\nP8cCfFJbHON6Khd4jvm+FL5a9z99KkWTBQoo6DRs7mbmjvVtYS2jwW977kH4e/fr\nKVIt5qJtj5a1elXwNhXeFu8pn8IP9UvSFB3ECtslbBcEuGemhErWrQszuBMfHSx/\nwBKDppaZEgGVnSgn3lRYHNpjiyNquf5Pp0uTmCcBJQKBgQDgiLAgIyYNhwFkXjZM\nkW044caRiTV3JhIl5+k/tRrJIj6bxDc/HlnBZXfVO5JqUSNhtwd5voGxaEyefriM\nyS00LnXs4D9w5BVUFVeVk6R9Nz6aI2GXVAPAU5oOHpYpovaEpFh4LoApVFs0DZk6\nYEOg/oayr1YercaMHgzVpYpunwKBgQDd+XyoKZpZkdi5NidA1As18VlYTWAU3Mag\nd2WJhpnQpA9jISLJNjTg+NXigTj7GgWCBNZfLSEFDWwWFmgIWANd0mGPX0SAwVv+\nDz3zxvjdB18XUb4aQjvHZx36EeJueJ1p6ozyFNZp2vN9GDablNcqlz7JgXmEiWg3\n+MZdk6otDwKBgEaovURfy0nWgomjXFMcMNMFugdytnCYen2TTcPOqm9BZ5J9XSVv\n168Uz3E7Hgh3IDtP7fpSCV5bBEGcf1dOt/sD4/h3WX+dR1j+nmFj5Q/CouC+4adN\nuSB9Lq3i0j6oGgwD7BNmDs7yzQDEhsPoJ2AyuRDiPKfK6ACQNFnHjpjhAoGBAIqi\nPgO88ASO/V83fi6UAGhxUw6+TIrbFEa2KzlIUpqnTGDqGhK3AzGa1+J+OHtDVjtN\nECIjSmMgbeghmFnVtkyLj5j+tAcCPJUhKd0t4NISv4YN7H/z6+fu9B7xuoyqUg4L\ninnLH9q+/6GaVMi4neWgznsFnUJ0mx2SBzn8dqVrAoGAXQCThIjcSDAdFQ3EfJpH\nZSuiTpuW/PidHALg6e0GoGPfBZgo/yhNBV5IjBh0p4rrq6AOBymGZkzPft3IUDlb\nAM2DMyxR1NTS5w15USdAZZGdqmi72rt3J3RLvsOSeQAFPFPPsZLTLzWdMPMPdLwo\nD//YIsH1EYU+S1oYl8wgdcI=\n-----END PRIVATE KEY-----\n";
 
@@ -216,8 +215,6 @@ class Home extends React.Component {
           private_key: PRIVATE_KEY,
         });
 
-        
-    
         // loads document properties and worksheets-
         await doc.loadInfo();
 
@@ -236,8 +233,8 @@ class Home extends React.Component {
           
         }).then((finalArray) => {this.setState({one: finalArray[0], two: finalArray[1], three: finalArray[2], four: finalArray[3], five: finalArray[4]})});
         
-        var sheet = doc.sheetsById["0"];
-        var row = sheet.getRows();
+        sheet = doc.sheetsById["0"];
+        row = sheet.getRows();
         
         var homeSheet = []
         //rows for home page
@@ -257,8 +254,8 @@ class Home extends React.Component {
           this.setState({words: (["_____"]).concat(finalArray)})    
         });
 
-        var sheet = doc.sheetsById["1952798230"];
-        var row = sheet.getRows();
+        sheet = doc.sheetsById["1952798230"];
+        row = sheet.getRows();
     
         var miscSheet = []
         //rows for home page
@@ -296,8 +293,8 @@ class Home extends React.Component {
           }
       });
 
-        var sheet = doc.sheetsById["2063393064"];
-        var row = sheet.getRows();
+        sheet = doc.sheetsById["2063393064"];
+        row = sheet.getRows();
     
         var bookSheet = []
         //rows for home page
@@ -314,8 +311,8 @@ class Home extends React.Component {
           
         }).then((finalArray) => {this.setState({books: finalArray})});
 
-        var sheet = doc.sheetsById["2075105674"];
-        var row = sheet.getRows();
+        sheet = doc.sheetsById["2075105674"];
+        row = sheet.getRows();
     
         var videosSheet = []
         //rows for home page
@@ -329,8 +326,8 @@ class Home extends React.Component {
         }).then((finalArray) => {this.setState({videos: finalArray})});
         
 
-        var sheet = doc.sheetsById["374721241"];
-        var row = sheet.getRows();
+        sheet = doc.sheetsById["374721241"];
+        row = sheet.getRows();
     
         var streamSheet = []
         //rows for home page
@@ -345,8 +342,8 @@ class Home extends React.Component {
         }).then((finalArray) => {this.setState({spotify: finalArray[0], appleMusic: finalArray[1], soundcloud: finalArray[2]})});
         
 
-        var sheet = doc.sheetsById["950251716"];
-        var row = sheet.getRows();
+        sheet = doc.sheetsById["950251716"];
+        row = sheet.getRows();
     
         var intakeSheet = []
         //rows for home page
@@ -386,13 +383,9 @@ class Home extends React.Component {
             }
           this.setState({images: renderIntake})});
 
-
       } catch (e) {
         console.error('Error: ', e);
       }
-      
-      
-
       
     };
 
@@ -403,13 +396,9 @@ class Home extends React.Component {
     }, 3000);
 
     setTimeout(() => {
-      this.setState({showPage: true});
-  }, 5000);
+        this.setState({showPage: true});
+    }, 5000);
 
-    //console.log(sheetsToStates().then((values) => {console.log(values)}))
-    //this.setState({words: sheetsToStates})
-    //this.setState({showPage: true})
-    
   }
 
   componentDidUnmount() {
@@ -496,7 +485,6 @@ class Home extends React.Component {
                     </clipPath>
                     </defs>
                     </svg>
-                    
                     }
                     
                   <br></br>
@@ -507,19 +495,11 @@ class Home extends React.Component {
 
                 {this.state.alertVideo !== null && <div>
                     <br></br>
-                    <iframe src={this.state.alertVideo} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                      
+                    <iframe src={this.state.alertVideo} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>   
                   </div>}
-                
-                
-            
-
                 <br></br>
               </div>}
 
-
-              
-            
             <p className="subheader">{this.state.headerLineOne}</p>
             <p className="subheader">{this.state.headerLineTwo} {textThatChanges}</p>
             <br></br>

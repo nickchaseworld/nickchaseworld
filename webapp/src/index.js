@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Home from './Home';
 import App from './App';
+import QR from './QR';
 import reportWebVitals from './reportWebVitals';
 import {
   BrowserRouter as Router,
@@ -18,6 +19,7 @@ const routing = (
   <Router>
     <Switch>
       <Route exact path="/" component={Home}/>  
+      <Route exact path="/QR" component={QR}/>  
       <Route exact path="/*" component={Redirect}/>    
       
     </Switch>
