@@ -15,6 +15,20 @@
     100%  { -webkit-filter: grayscale(100%); filter: grayscale(100%); }
 }
 
+@keyframes myAnim {
+    0% {
+        opacity: 0;
+      }
+    
+      100% {
+        opacity: 1;
+      }
+  }
+
+.fades {
+    animation: myAnim 1s ease 0s 1 normal forwards;
+}
+
 .loadingDiv {
     width: 100vw;
     height: 100vh;
