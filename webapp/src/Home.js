@@ -437,7 +437,7 @@ class Home extends React.Component {
           <br></br>
 
           {/*"HOME" PAGE*/}
-          {((this.state.page === this.state.three) || (this.state.page === "DEFAULT")) && <div className="pageContainer">
+          <div className="pageContainer" style={{display: (this.state.page === this.state.three) || (this.state.page === 'DEFAULT') ? 'block' : 'none'}}>
             <center> 
               {//FULL SCREEN ERROR LOAD, LOCALLY LOADED
               this.state.imagesAllLoaded === false && <h1>TRY RELOADING THE PAGE</h1>
@@ -532,9 +532,9 @@ class Home extends React.Component {
               <Clock format={'hh:mm a'} ticking={true} timezone={'US/Eastern'} />
               <h1 className="atl">ATLANTA</h1>
             </center>
-          </div>}
+          </div>
           
-          {this.state.page === this.state.two && <div className="pageContainer">
+          <div className="pageContainer" style={{display: this.state.page === this.state.two ? 'block' : 'none'}}>
               <center>
               {this.state.videos.map((item, index) => <div>
                 <iframe src={item} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -543,8 +543,10 @@ class Home extends React.Component {
                 </div>)}
                 <br></br>
               </center>
-            </div>}
-          {this.state.page === this.state.four && <div className="pageContainer">
+            </div>
+
+
+          <div className="pageContainer" style={{display: this.state.page === this.state.four ? 'block' : 'none'}}>
             <div className="row">
 
               {this.state.images.map(item => (
@@ -574,9 +576,9 @@ class Home extends React.Component {
                   </div> 
                 : <div><h1>error</h1></div>)  )}
                 </div>
-            </div>}
+            </div>
 
-          {this.state.page === this.state.one && <div className="pageContainer">
+          <div className="pageContainer" style={{display: (this.state.page === this.state.one) ? 'block' : 'none'}}>
             <center>
               {/*<DropdownButton size="md" id="dropdown-basic-button" title={this.state.musicProvider} onClick={e => e.preventDefault()} style={{margin: '0 auto', marginTop: '10px'}}>
                   <Dropdown.Item onClick={e => this.musicProviderSelect(e)}>Spotify</Dropdown.Item>
@@ -599,8 +601,8 @@ class Home extends React.Component {
               {this.state.musicProvider === "Apple Music" && <div></div>}
           {this.state.musicProvider === "Soundcloud" && <div></div>}*/}
             </center>
-            </div>}
-          {this.state.page === this.state.five && <div className="pageContainer">
+            </div>
+          <div className="pageContainer" style={{display: (this.state.page === this.state.five) ? 'block' : 'none'}}>
             
           <Slider {...settings}>
             {this.state.books.map((item, index) => <div className="bookSlide">
@@ -609,7 +611,7 @@ class Home extends React.Component {
                     <center><p className="bookDescription">{item[1]}</p></center>
             </div>)}
           </Slider>
-            </div>}
+            </div>
 
           <br></br>
           <br></br>
