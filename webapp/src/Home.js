@@ -624,14 +624,15 @@ class Home extends React.Component {
                       <center><p className="bookDescription">{item[1]}</p></center>
               </div>)}
             </Slider>
+            
               </div>
-
+          
+            </div>
             <br></br>
             <br></br>
             <br></br>
             <center><p className="footer">{this.state.footer}</p></center>
             <br></br>
-            </div>
           </div>
         </div>
 
