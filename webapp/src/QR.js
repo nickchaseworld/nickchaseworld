@@ -2,7 +2,6 @@ import React from 'react';
 import './App.css';
 
 
-
 class QR extends React.Component { 
 
   constructor() {
@@ -17,8 +16,6 @@ class QR extends React.Component {
   {
     
   }
-
-  
 
   
   render()

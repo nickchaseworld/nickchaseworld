@@ -1,7 +1,6 @@
 import React from 'react';
 import './App.css';
 
-
 //remove home.css, home dependecn
 class App extends React.Component { 
 

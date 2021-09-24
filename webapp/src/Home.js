@@ -5,7 +5,8 @@ import Clock from 'react-live-clock';
 import Slider from 'react-slick'
 import 'slick-carousel/slick/slick-theme.css';
 import 'slick-carousel/slick/slick.css';
-import loadingImage from './media/loadingImage.jpg';
+import loadingImageDesktop from './media/loadDesktop.png';
+import loadingImageMobile from './media/loadMobile.png';
 import './Home.css';
 
 //LOOK UP HOW TO LOOP ANIMATION, AND ALSO HOW TO TIME ANIMATION SO THAT IT CORRESPONDS TO THE TIME THAT SOMETHING LOADS, SEE WHEN AN IMAGE
@@ -77,6 +78,7 @@ class Home extends React.Component {
       three: null,
       four: null,
       five: null,
+      loadingBackground: null,
     };
 
     this.submitWord = this.submitWord.bind(this)
@@ -84,7 +86,6 @@ class Home extends React.Component {
 
     this.submitMailingList = this.submitMailingList.bind(this)
     this.submitMailingListAlt = this.submitMailingListAlt.bind(this)
-    
   } 
 
   submitMailingList = (wordInput) => {
@@ -199,6 +200,14 @@ class Home extends React.Component {
 
   componentDidMount()
   {
+    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent))
+    {
+      this.setState({loadingBackground: loadingImageMobile})
+    }
+    else
+    {
+      this.setState({loadingBackground: loadingImageDesktop})
+    }
 
     const sheetsToData = async () => {
       try {
@@ -405,13 +414,15 @@ class Home extends React.Component {
   
   render()
   {  
+
     let textThatChanges = this.state.words[this.state.textIdx % this.state.words.length];
       
     return(   
       <div>  {/* DO NOT REMOVE THIS DIV COMPONENT*/}
       
         <div className="loadingDiv" style={{display: !this.state.showPage ? 'block' : 'none'}}>
-          <img src={loadingImage} className="loadingScreen" alt="reload the page"></img>
+          <img src={this.state.loadingBackground} className="loadingScreen" alt="reload the page"></img>
+          
         </div>
 
       
