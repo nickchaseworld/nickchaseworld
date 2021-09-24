@@ -241,8 +241,6 @@ class Home extends React.Component {
           return homeSheet
           
         }).then((finalArray) => {
-          //console.log((finalArray[0].split("https://drive.google.com/file/d/")[1]).split("/view?usp=sharing")[0])
-          
           this.setState({words: (["_____"]).concat(finalArray)})    
         });
 
@@ -413,7 +411,7 @@ class Home extends React.Component {
       <div>  {/* DO NOT REMOVE THIS DIV COMPONENT*/}
       
         <div className="loadingDiv" style={{display: !this.state.showPage ? 'block' : 'none'}}>
-          <img src={loadingImage} className="loadingScreen" alt="here"></img>
+          <img src={loadingImage} className="loadingScreen" alt="reload the page"></img>
         </div>
 
       
@@ -498,7 +496,7 @@ class Home extends React.Component {
                     </div>}
 
                     <p className="subheader">{this.state.headerLineOne}</p>
-                    <p className="subheader">{this.state.headerLineTwo} {textThatChanges}</p>
+                    <p className="subheader">{this.state.headerLineTwo} {/*textThatChanges*/}</p>
                     <br></br>
                       <div class="element">
                         <p className="subheader"><input type="text" id="wordToSubmit" onKeyPress={e => this.submitWord(e)}/></p>
