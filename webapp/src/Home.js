@@ -79,6 +79,7 @@ class Home extends React.Component {
       four: null,
       five: null,
       loadingBackground: null,
+      failedLoad: null,
     };
 
     this.submitWord = this.submitWord.bind(this)
@@ -524,7 +525,8 @@ class Home extends React.Component {
                 
                 <br></br>
               
-              {this.state.homePageImage !== null && <img src={"https://drive.google.com/uc?export=view&id=" + this.state.homePageImage} alt="nickchase" onLoad={() => this.setState({showPage: true})} onError={() => this.setState({showPage: false})} ></img>}
+              {this.state.homePageImage !== null && <img src={"https://drive.google.com/uc?export=view&id=" + this.state.homePageImage} alt="nickchase" onLoad={() => this.setState({showPage: true})} onError={() => {this.setState({showPage: false})
+               alert("hmmm... the site failed to load, try again!") }} ></img>}
                 <br></br>
                 <br></br>
                 {this.state.words.map(word => (word !== "_____" && <div>
