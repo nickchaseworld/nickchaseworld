@@ -526,7 +526,8 @@ class Home extends React.Component {
                 <br></br>
               
               {this.state.homePageImage !== null && <img src={"https://drive.google.com/uc?export=view&id=" + this.state.homePageImage} alt="nickchase" onLoad={() => this.setState({showPage: true})} onError={() => {this.setState({showPage: false})
-               alert("hmmm... the site failed to load, try again!") }} ></img>}
+               alert("hmmm... the site failed to load, let's reload!")
+               window.location.reload() }} ></img>}
                 <br></br>
                 <br></br>
                 {this.state.words.map(word => (word !== "_____" && <div>
