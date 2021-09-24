@@ -395,7 +395,7 @@ class Home extends React.Component {
     }, 3000);
 
     setTimeout(() => {
-        this.setState({showPage: true});
+        
     }, 6000);
 
   }
@@ -524,7 +524,7 @@ class Home extends React.Component {
                 
                 <br></br>
               
-              {this.state.homePageImage !== null && <img src={"https://drive.google.com/uc?export=view&id=" + this.state.homePageImage} alt="nickchase" onLoad={() => this.setState({imagesAllLoaded: true})} onError={() => this.setState({imagesAllLoaded: false})} ></img>}
+              {this.state.homePageImage !== null && <img src={"https://drive.google.com/uc?export=view&id=" + this.state.homePageImage} alt="nickchase" onLoad={() => this.setState({showPage: true})} onError={() => this.setState({showPage: false})} ></img>}
                 <br></br>
                 <br></br>
                 {this.state.words.map(word => (word !== "_____" && <div>
