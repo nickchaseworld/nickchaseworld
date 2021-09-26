@@ -38,7 +38,7 @@ function getRandomInt(max) {
 
 class Home extends React.Component { 
 
-  //the states of emotion and source will be set to null initially until the user had filled out the form.
+  //the dynamic states that'll render on the page
   constructor() {
     super();
     this.state = {
@@ -83,66 +83,9 @@ class Home extends React.Component {
 
     this.submitWord = this.submitWord.bind(this)
     this.submitWordAlt = this.submitWordAlt.bind(this)
-
-    this.submitMailingList = this.submitMailingList.bind(this)
-    this.submitMailingListAlt = this.submitMailingListAlt.bind(this)
   } 
 
-  submitMailingList = (wordInput) => {
-    if(wordInput.key === "Enter")
-    {
-      if(wordInput.target.value === "")
-      {
-        alert(this.state.mailReject)
-      }
-      else
-      {
-        doc.useServiceAccountAuth({
-          client_email: CLIENT_EMAIL,
-          private_key: PRIVATE_KEY,
-        });
-    
-        // loads document properties and worksheets-
-        doc.loadInfo();
-        
-        var sheet = doc.sheetsById["1051245958"];
-        sheet.addRows([
-          { Entry: wordInput.target.value}])
-           
-        alert(this.state.mailAccept)
-        wordInput.target.value = ""
-      }
-
-    }
-    
-  }
-
-  submitMailingListAlt = () => {
-    var val = document.getElementById("mailingListInput").value
-    if(val === "")
-      {
-        alert(this.state.mailReject)
-      }
-      else
-      {
-        doc.useServiceAccountAuth({
-          client_email: CLIENT_EMAIL,
-          private_key: PRIVATE_KEY,
-        });
-    
-        // loads document properties and worksheets-
-        doc.loadInfo();
-        
-        var sheet = doc.sheetsById["1051245958"];
-        sheet.addRows([
-          { Entry: val}])
-           
-        alert(this.state.mailAccept)
-        document.getElementById("mailingListInput").value = ""
-      }
-
-  }
-
+  //function to submit word, BUTTON
   submitWordAlt = () => {
     var val = document.getElementById("wordToSubmit").value
     if(val === "")
@@ -168,6 +111,7 @@ class Home extends React.Component {
       }
   }
 
+  //function to submitword, TYPED
   submitWord = (wordInput) => {
     //console.log(wordInput.key )
     if(wordInput.key === "Enter")
@@ -196,10 +140,10 @@ class Home extends React.Component {
       }
     }
   }
-  
 
   componentDidMount()
   {
+    //determines loading screen image, desktop or mobile
     if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent))
     {
       this.setState({loadingBackground: loadingImageMobile})
@@ -209,6 +153,7 @@ class Home extends React.Component {
       this.setState({loadingBackground: loadingImageDesktop})
     }
 
+    //pull data from google sheets api
     const sheetsToData = async () => {
       try {
         await doc.useServiceAccountAuth({
@@ -223,7 +168,7 @@ class Home extends React.Component {
         var row = sheet.getRows();
     
         var pagesSheet = []
-        //rows for home page
+        //rows for pages
         row.then((value) => {
           for(var i = 0; i < value.length; i++)
           {
@@ -257,7 +202,7 @@ class Home extends React.Component {
         row = sheet.getRows();
     
         var miscSheet = []
-        //rows for home page
+        //rows for misc
         row.then((value) => {
           for(var i = 0; i < value.length; i++)
           {
@@ -272,7 +217,6 @@ class Home extends React.Component {
             
           }
           return miscSheet
-          
         }).then((finalArray) => {
           this.setState({
             homePageImage: (finalArray[0].split("https://drive.google.com/file/d/")[1]).split("/view?usp=sharing")[0], headerLineOne: finalArray[1], headerLineTwo: finalArray[2], mailingListHeader: finalArray[3], mailingPlaceholder: finalArray[4], wordReject: finalArray[5], wordAccept: finalArray[6], mailReject: finalArray[7], mailAccept: finalArray[8], footer: finalArray[9]})
@@ -296,7 +240,7 @@ class Home extends React.Component {
         row = sheet.getRows();
     
         var bookSheet = []
-        //rows for home page
+        //rows for books
         row.then((value) => {
           for(var i = 0; i < value.length; i++)
           {
@@ -314,7 +258,7 @@ class Home extends React.Component {
         row = sheet.getRows();
     
         var videosSheet = []
-        //rows for home page
+        //rows for videos
         row.then((value) => {
           for(var i = 0; i < value.length; i++)
           {
@@ -329,7 +273,7 @@ class Home extends React.Component {
         row = sheet.getRows();
     
         var streamSheet = []
-        //rows for home page
+        //rows for streams
         row.then((value) => {
           for(var i = 0; i < value.length; i++)
           {
@@ -345,7 +289,7 @@ class Home extends React.Component {
         row = sheet.getRows();
     
         var intakeSheet = []
-        //rows for home page
+        //rows for intake
         row.then((value) => {
           for(var i = 0; i < value.length; i++)
           {
@@ -383,12 +327,17 @@ class Home extends React.Component {
           this.setState({images: renderIntake})});
 
       } catch (e) {
-        console.error('Error: ', e);
+          //error if google sheets quota reached
+          alert("hmmm... the site failed to load, reloading in a few seconds, exit this alert!" );
+          setTimeout(() => {
+            window.location.reload()
+          }, 10000);
       }
-      
     };
 
     sheetsToData()
+
+    //text carousel
     this.timeout = setInterval(() => {
       let currentIdx = this.state.textIdx;
       this.setState({ textIdx: currentIdx + 1 });
