@@ -368,7 +368,7 @@ class Home extends React.Component {
       <div>  {/* DO NOT REMOVE THIS DIV COMPONENT*/}
       
         <div className="loadingDiv" style={{display: !this.state.showPage ? 'block' : 'none'}}>
-          <img src={this.state.loadingBackground} className="loadingScreen" alt="reload the page"></img>
+          <img src={this.state.loadingBackground} className="loadingScreen" alt="Nick Chase Music loading screen"></img>
           
         </div>
 
@@ -400,9 +400,15 @@ class Home extends React.Component {
                 {//FULL SCREEN ERROR LOAD, LOCALLY LOADED
                 this.state.imagesAllLoaded === false && <h1>TRY RELOADING THE PAGE</h1>
                 }
+
+            {((this.state.alertSongImage !== null) || (this.state.alertVideo !== null))&& <div>
+                <p className="subheader" style={{color: this.state.alertTextColor}}>{this.state.alertTextLineOne}</p>
+                <p className="subheader" style={{color: this.state.alertTextColor}}>{this.state.alertTextLineTwo}</p>
+                </div>}
+
                 {((this.state.alertSongImage !== null) && (((this.state.alertSongSpotify !== null) && (this.state.alertSongAppleMusic !== null))|| (this.state.alertSongSoundcloud !== null))) && <div>
                   
-                  <img src={"https://drive.google.com/uc?export=view&id=" + this.state.alertSongImage} className="alertImage" alt="nickchase" onLoad={() => this.setState({imagesAllLoaded: true})} onError={() => this.setState({imagesAllLoaded: false})}></img>
+                  <img src={"https://drive.google.com/uc?export=view&id=" + this.state.alertSongImage} className="alertImage" alt="new Nick Chase song out now!"></img>
                   
                   <br></br>
                   
@@ -422,7 +428,7 @@ class Home extends React.Component {
                         </g>
                         <defs>
                         <clipPath id="clip0">
-                        <rect width="67" height="38" fill="white" transform="translate(78 1)"/>
+                          <rect width="67" height="38" fill="white" transform="translate(78 1)"/>
                         </clipPath>
                         </defs>
                       </svg>}
@@ -442,16 +448,16 @@ class Home extends React.Component {
                         
                       <br></br>
                       <br></br>
-                      <p className="subheader" style={{color: this.state.alertTextColor}}>{this.state.alertTextLineOne}</p>
-                      <p className="subheader" style={{color: this.state.alertTextColor}}>{this.state.alertTextLineTwo}</p>
+                     
                     </div>
+                    
+                    </div>}
 
                     {this.state.alertVideo !== null && <div>
                       <br></br>
-                      <iframe src={this.state.alertVideo} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>   
+                      <iframe src={this.state.alertVideo} title="Nick Chase YouTube video player" alt="new Nick Chase music video out now!" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>   
                       </div>}
                       <br></br>
-                    </div>}
 
                     <p className="subheader">{this.state.headerLineOne}</p>
                     <p className="subheader">{this.state.headerLineTwo} {/*textThatChanges*/}</p>
@@ -501,7 +507,7 @@ class Home extends React.Component {
               <div className="fades">
                 <center>
                 {this.state.videos.map((item, index) => <div>
-                  <iframe src={item} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                  <iframe src={item} title="Nick Chase YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     <br></br>
                     <br></br>
                   </div>)}
@@ -519,7 +525,7 @@ class Home extends React.Component {
                 item[0] === '1' ? 
                   <div className="column1">
                     <center>
-                      <img src={"https://drive.google.com/uc?export=view&id=" + item.slice(1)} style={{width: '100%'}} alt="here" onLoad={() => this.setState({imagesAllLoaded: true})} onError={() => this.setState({imagesAllLoaded: false})} ></img>
+                      <img src={"https://drive.google.com/uc?export=view&id=" + item.slice(1)} style={{width: '100%'}} alt="Nick Chase Photos" onLoad={() => this.setState({imagesAllLoaded: true})} onError={() => this.setState({imagesAllLoaded: false})} ></img>
                       <br></br>
                       <br></br>
                     </center>
@@ -527,7 +533,7 @@ class Home extends React.Component {
                 : item[0] === '2' ? 
                     <div className="column2">
                       <center>
-                        <img src={"https://drive.google.com/uc?export=view&id=" + item.slice(1)} style={{width: '100%'}} alt="here" onLoad={() => this.setState({imagesAllLoaded: true})} onError={() => this.setState({imagesAllLoaded: false})} ></img>
+                        <img src={"https://drive.google.com/uc?export=view&id=" + item.slice(1)} style={{width: '100%'}} alt="Nick Chase Photos" onLoad={() => this.setState({imagesAllLoaded: true})} onError={() => this.setState({imagesAllLoaded: false})} ></img>
                         <br></br>
                       <br></br>
                       </center>
@@ -535,7 +541,7 @@ class Home extends React.Component {
                 : item[0] === '3' ? 
                   <div className="column3">
                     <center>
-                      <img src={"https://drive.google.com/uc?export=view&id=" + item.slice(1)} style={{width: '100%'}} alt="here" onLoad={() => this.setState({imagesAllLoaded: true})} onError={() => this.setState({imagesAllLoaded: false})} ></img>
+                      <img src={"https://drive.google.com/uc?export=view&id=" + item.slice(1)} style={{width: '100%'}} alt="Nick Chase Photos" onLoad={() => this.setState({imagesAllLoaded: true})} onError={() => this.setState({imagesAllLoaded: false})} ></img>
                       <br></br>
                       <br></br>
                       </center>
@@ -577,7 +583,7 @@ class Home extends React.Component {
             
             <Slider {...settings}>
               {this.state.books.map((item, index) => <div className="bookSlide">
-                <img src={"https://drive.google.com/uc?export=view&id=" + item[0]} alt="here" onLoad={() => this.setState({imagesAllLoaded: true})} onError={() => this.setState({imagesAllLoaded: false})} ></img>
+                <img src={"https://drive.google.com/uc?export=view&id=" + item[0]} alt="Nick Chase Book Recommendation" onLoad={() => this.setState({imagesAllLoaded: true})} onError={() => this.setState({imagesAllLoaded: false})} ></img>
                       <br></br>
                       <center><p className="bookDescription">{item[1]}</p></center>
               </div>)}
