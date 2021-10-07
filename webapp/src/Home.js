@@ -596,7 +596,7 @@ class Home extends React.Component {
             <br></br>
             <br></br>
             <center>
-              <p className="footer">{this.state.footer}<br></br><span className="text">developed by <a className="text" target="_blank" rel="noreferrer" href="www.whatadamnsite.com">What a Damn Site.</a></span></p>
+              <p className="footer">{this.state.footer}<br></br><br></br><span className="text">developed by<br></br> <a className="text" target="_blank" rel="noreferrer" href="https://www.whatadamnsite.com">What a Damn Site.</a></span></p>
 
               
             </center>

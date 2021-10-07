@@ -133,7 +133,9 @@ h1 {
 .text {
     font-family: 'IM Fell Great Primer', serif;
     margin: 0;
-    font-size: 25px;
+    padding: 0;
+    font-size: 20px;
+    color: black;
   }
 
 
