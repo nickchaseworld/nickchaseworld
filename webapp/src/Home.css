@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Spartan:wght@900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@800&family=Spartan:wght@900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Abhaya+Libre:wght@600&family=Open+Sans:wght@800&family=Spartan:wght@900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IM+Fell+Great+Primer&display=swap');
 
 * {
     font-family: 'Spartan', sans-serif;
@@ -128,6 +129,12 @@ h1 {
     font-size: 25px;
     margin: 0 auto;
 }
+
+.text {
+    font-family: 'IM Fell Great Primer', serif;
+    margin: 0;
+    font-size: 25px;
+  }
 
 
 img {
@@ -337,6 +344,10 @@ iframe {
     .footer {
         font-size: 15px;
     }
+
+    .text {
+        font-size: 15px;
+      }
 
     .dayOfWeek {
         font-size: 20px !important;
