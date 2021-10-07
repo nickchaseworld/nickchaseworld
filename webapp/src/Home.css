@@ -254,10 +254,11 @@ iframe {
     }
     
     .loadingScreen {
+        margin-top:50px;
         background-position: center center;
         background-repeat: no-repeat;
         background-size: contain;
-        width: 100vh;
+        width: 100vw;
         overflow: none;
     }
 
