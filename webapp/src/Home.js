@@ -531,7 +531,7 @@ class Home extends React.Component {
                     </center>
                   </div> 
                 : item[0] === '2' ? 
-                    <div className="column2">
+                    <div className="column1">
                       <center>
                         <img src={"https://drive.google.com/uc?export=view&id=" + item.slice(1)} style={{width: '100%'}} alt="Nick Chase Photos" onLoad={() => this.setState({imagesAllLoaded: true})} onError={() => this.setState({imagesAllLoaded: false})} ></img>
                         <br></br>
@@ -539,7 +539,7 @@ class Home extends React.Component {
                       </center>
                     </div> 
                 : item[0] === '3' ? 
-                  <div className="column3">
+                  <div className="column1">
                     <center>
                       <img src={"https://drive.google.com/uc?export=view&id=" + item.slice(1)} style={{width: '100%'}} alt="Nick Chase Photos" onLoad={() => this.setState({imagesAllLoaded: true})} onError={() => this.setState({imagesAllLoaded: false})} ></img>
                       <br></br>
