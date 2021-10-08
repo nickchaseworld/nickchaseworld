@@ -221,7 +221,7 @@ class Home extends React.Component {
           return miscSheet
         }).then((finalArray) => {
           this.setState({
-            homePageImage: (finalArray[0].split("https://drive.google.com/file/d/")[1]).split("/view?usp=sharing")[0], headerLineOne: finalArray[1], headerLineTwo: finalArray[2], mailingListHeader: finalArray[3], mailingPlaceholder: finalArray[4], wordReject: finalArray[5], wordAccept: finalArray[6], mailReject: finalArray[7], mailAccept: finalArray[8], footer: finalArray[9]})
+            homePageImage: finalArray[0], headerLineOne: finalArray[1], headerLineTwo: finalArray[2], mailingListHeader: finalArray[3], mailingPlaceholder: finalArray[4], wordReject: finalArray[5], wordAccept: finalArray[6], mailReject: finalArray[7], mailAccept: finalArray[8], footer: finalArray[9]})
           
           //a catch all to only code text color and thing once
           if((finalArray[10] !== null) || (finalArray[14] !== null))
@@ -248,7 +248,7 @@ class Home extends React.Component {
           {
             var unparsed = String(value[i]['_rawData'][0])
             
-            var bookCoverImg = (unparsed.split("https://drive.google.com/file/d/")[1]).split("/view?usp=sharing")[0]
+            var bookCoverImg = (unparsed)//.split("https://drive.google.com/file/d/")[1]).split("/view?usp=sharing")[0]
             var bookDescription = String(value[i]['_rawData'][1])
             bookSheet.push([bookCoverImg, bookDescription])
           }
@@ -297,7 +297,7 @@ class Home extends React.Component {
           {
             var unparsed = String(value[i]['_rawData'][0])
             
-            intakeSheet.push((unparsed.split("https://drive.google.com/file/d/")[1]).split("/view?usp=sharing")[0])
+            intakeSheet.push(unparsed)//(unparsed.split("https://drive.google.com/file/d/")[1]).split("/view?usp=sharing")[0])
           }
           return intakeSheet
           
@@ -411,7 +411,7 @@ class Home extends React.Component {
 
                 {((this.state.alertSongImage !== null) && (((this.state.alertSongSpotify !== null) && (this.state.alertSongAppleMusic !== null))|| (this.state.alertSongSoundcloud !== null))) && <div>
                   
-                  <img src={"https://drive.google.com/uc?export=view&id=" + this.state.alertSongImage} className="alertImage" alt="new Nick Chase song out now!"></img>
+                  <img src={this.state.alertSongImage} className="alertImage" alt="new Nick Chase song out now!"></img>
                   
                   <br></br>
                   
@@ -480,7 +480,7 @@ class Home extends React.Component {
                 
                 <br></br>
               
-              {this.state.homePageImage !== null && <img src={"https://drive.google.com/uc?export=view&id=" + this.state.homePageImage} alt="nickchase" onLoad={() => this.setState({showPage: true})} onError={() => {this.setState({showPage: true})
+              {this.state.homePageImage !== null && <img src={this.state.homePageImage} alt="nickchase" onLoad={() => this.setState({showPage: true})} onError={() => {this.setState({showPage: true})
                /*alert("hmmm... the site failed to load, let's reload!")
                     window.location.reload()*/ }} ></img>}
                 <br></br>
@@ -528,7 +528,7 @@ class Home extends React.Component {
                 item[0] === '1' ? 
                   <div className="column1">
                     <center>
-                      <img src={"https://drive.google.com/uc?export=view&id=" + item.slice(1)} style={{width: '100%'}} alt="Nick Chase Photos" onLoad={() => this.setState({imagesAllLoaded: true})} onError={() => this.setState({imagesAllLoaded: false})} ></img>
+                      <img src={item.slice(1)} style={{width: '100%'}} alt="Nick Chase Photos" onLoad={() => this.setState({imagesAllLoaded: true})} onError={() => this.setState({imagesAllLoaded: false})} ></img>
                       <br></br>
                       <br></br>
                     </center>
@@ -536,7 +536,7 @@ class Home extends React.Component {
                 : item[0] === '2' ? 
                     <div className="column1">
                       <center>
-                        <img src={"https://drive.google.com/uc?export=view&id=" + item.slice(1)} style={{width: '100%'}} alt="Nick Chase Photos" onLoad={() => this.setState({imagesAllLoaded: true})} onError={() => this.setState({imagesAllLoaded: false})} ></img>
+                        <img src={item.slice(1)} style={{width: '100%'}} alt="Nick Chase Photos" onLoad={() => this.setState({imagesAllLoaded: true})} onError={() => this.setState({imagesAllLoaded: false})} ></img>
                         <br></br>
                       <br></br>
                       </center>
@@ -544,7 +544,7 @@ class Home extends React.Component {
                 : item[0] === '3' ? 
                   <div className="column1">
                     <center>
-                      <img src={"https://drive.google.com/uc?export=view&id=" + item.slice(1)} style={{width: '100%'}} alt="Nick Chase Photos" onLoad={() => this.setState({imagesAllLoaded: true})} onError={() => this.setState({imagesAllLoaded: false})} ></img>
+                      <img src={item.slice(1)} style={{width: '100%'}} alt="Nick Chase Photos" onLoad={() => this.setState({imagesAllLoaded: true})} onError={() => this.setState({imagesAllLoaded: false})} ></img>
                       <br></br>
                       <br></br>
                       </center>
@@ -586,7 +586,7 @@ class Home extends React.Component {
             
             <Slider {...settings}>
               {this.state.books.map((item, index) => <div className="bookSlide">
-                <img src={"https://drive.google.com/uc?export=view&id=" + item[0]} alt="Nick Chase Book Recommendation" onLoad={() => this.setState({imagesAllLoaded: true})} onError={() => this.setState({imagesAllLoaded: false})} ></img>
+                <img src={item[0]} alt="Nick Chase Book Recommendation" onLoad={() => this.setState({imagesAllLoaded: true})} onError={() => this.setState({imagesAllLoaded: false})} ></img>
                       <br></br>
                       <center><p className="bookDescription">{item[1]}</p></center>
               </div>)}
