@@ -28,7 +28,7 @@ var settings = {
 
 const SPREADSHEET_ID = "1HWPDbItdCiM973f9z3nc3HuTeV0gaB6UwZp2o8lgzOU";
 const CLIENT_EMAIL = "admin-196@nickchaseworld.iam.gserviceaccount.com";
-const PRIVATE_KEY = "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDCsNJUwRp0zL29\nN5aX0u0pOXGUiJPxZplVw5+UdAQ+J/UFz4sWOXe4vU6GIZ1+7hhkHg8l18yGwYae\n4xm3zXy5EgO/ZnqXSe02Faq/v4HSRKmwkX+TOipVhNZceFQ3/jgbvQJsHbBt58zc\nQCMr8z2ehdfpPvXu67FH1QlgYTfWS0onSi6d3xNBWnw9ES680P+Mx32Q8/ldWDpO\nxB4DptFbwQP3DqOomIViX3O4K5UHP3x0qSgXaeH3w5YPob6zizf75Rtw2kpZLvG8\nNkTmFXii5qfaeRSSKXFvfU8KIQlKwpK+tBUvYm5aSmQdCO9LHkk7yOcb2XNttDnT\n49PLJG5RAgMBAAECggEAPtbVvJdrU6G16Dnl+HETLUgmOdvvbG5CNaVjf4YGzI0X\nD94SNYUs+ErZ6n81F4AADWiKWRuTHzednPEOHv5LMGz5GrEYBnbNArTxnNxSKa0R\n3DTKKZoPifTLP6NzA3OhZoqWGpFmncLAo6Jr98aV7/GhY953gLtASEAhu6MFY7vv\nP8cCfFJbHON6Khd4jvm+FL5a9z99KkWTBQoo6DRs7mbmjvVtYS2jwW977kH4e/fr\nKVIt5qJtj5a1elXwNhXeFu8pn8IP9UvSFB3ECtslbBcEuGemhErWrQszuBMfHSx/\nwBKDppaZEgGVnSgn3lRYHNpjiyNquf5Pp0uTmCcBJQKBgQDgiLAgIyYNhwFkXjZM\nkW044caRiTV3JhIl5+k/tRrJIj6bxDc/HlnBZXfVO5JqUSNhtwd5voGxaEyefriM\nyS00LnXs4D9w5BVUFVeVk6R9Nz6aI2GXVAPAU5oOHpYpovaEpFh4LoApVFs0DZk6\nYEOg/oayr1YercaMHgzVpYpunwKBgQDd+XyoKZpZkdi5NidA1As18VlYTWAU3Mag\nd2WJhpnQpA9jISLJNjTg+NXigTj7GgWCBNZfLSEFDWwWFmgIWANd0mGPX0SAwVv+\nDz3zxvjdB18XUb4aQjvHZx36EeJueJ1p6ozyFNZp2vN9GDablNcqlz7JgXmEiWg3\n+MZdk6otDwKBgEaovURfy0nWgomjXFMcMNMFugdytnCYen2TTcPOqm9BZ5J9XSVv\n168Uz3E7Hgh3IDtP7fpSCV5bBEGcf1dOt/sD4/h3WX+dR1j+nmFj5Q/CouC+4adN\nuSB9Lq3i0j6oGgwD7BNmDs7yzQDEhsPoJ2AyuRDiPKfK6ACQNFnHjpjhAoGBAIqi\nPgO88ASO/V83fi6UAGhxUw6+TIrbFEa2KzlIUpqnTGDqGhK3AzGa1+J+OHtDVjtN\nECIjSmMgbeghmFnVtkyLj5j+tAcCPJUhKd0t4NISv4YN7H/z6+fu9B7xuoyqUg4L\ninnLH9q+/6GaVMi4neWgznsFnUJ0mx2SBzn8dqVrAoGAXQCThIjcSDAdFQ3EfJpH\nZSuiTpuW/PidHALg6e0GoGPfBZgo/yhNBV5IjBh0p4rrq6AOBymGZkzPft3IUDlb\nAM2DMyxR1NTS5w15USdAZZGdqmi72rt3J3RLvsOSeQAFPFPPsZLTLzWdMPMPdLwo\nD//YIsH1EYU+S1oYl8wgdcI=\n-----END PRIVATE KEY-----\n";
+const PRIVATE_KEY = "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCliyWc9Cc/DIA3\nSXwkFDh8ARGwXfZCS2ptr/hVkxd3RgiRvJP0rKLXjcQo2UmdKzkvR6kKCypzzPt9\nCHQMP5SQQeISF2ul5lAvQLHHGuGGqjPC0L9JZPuJ9UrKCMqwKvukKQf14fntujAm\n2I93rHM6tPgClT8zKUvts/nn6bMigpAV9g+vpjlt9qHGnuYV5lBhwATleWHw39s1\nRErRQP6Z/YhZLZn9T7jZni4xMAz1/Kx3ZRPh9tbCS8v0d4Plz9RO+Hn1TnjpRkWy\nWqidtW3P9Nu6p6760WhdHRBc33Y8cKryztoiwEN+UqraW2QRaBZxpjwjZXhu4746\nweSzEqBJAgMBAAECggEAImHNjJUrB43FnXX+OhIXDy47qclCKc+3CZQIPGHB+GxL\nwFUN1735TlKr4J4Mi3+cL2UvRx49kXKL8xKL47Va2kFMvlwt5/V3RvElW0iKeakk\n+fvYFtrJ4YPYJjEAQ+mRfS1mcVufSJAoixDkb0MaZaGLdyHfT/VuRy7foxqnMW3d\n+eYjoKOQu6cYrRkSulxXd6hWcaygFAcpFOlB/MEC3JJAWwTbXoPRwyqOFc1UTqxb\nA9Rw3Qisf5If23KjsMhkySNmIZpwKI6HynT8wLf+JwtQb6kBWghhNRZlV3sAPi7V\ng0b4dKeyjW9oPHpgcVrVCoPcZD6WN191CRsHtcqF7wKBgQDX7MV307yNlVc1Ywyv\n4Bpd1ADZkCNU9QMq8xOc6vORrduYLv/artPS2dd9XQveUuqtFUkM21G08ep6pypH\nPwhL+wfH6EmurvWJ8nNJwM8rbDu2GdfBXHdQakn/FY2TVn0/JRGRX4uxPg4brg3G\nyfHuc3LsGJ9h3LPl4EJQVpOA4wKBgQDERJvyVljHnI3tFfwojDKVe/Lx22VFT06Y\nRwlAQqXdvQbY3c5sRfhQqE4oR1Ii9RjBYWLfRGFgg5YX1+LBQ/jTdriw1AySRnO/\nJQb0OqtudurDCgEei78wfjvr3Pc4T0NBfALb0SX5AQcmLoBlfcqmxMXwTMUobf0E\n7SizgC394wKBgCU/+YkEhCDAxLy3C7dDqAjLzCG8VfwQEK3WJWoKtl5JafrFEOp/\nApf7cMt1w9hk4Ytegq2vIFdg7JygPhDwdNP2yI7aKevyzvUvWGg+1P6eu2Zc6vW2\np/a9f2p8I2Jpp02/bVpw6z52gCSSUFoc+Jm0XP0R+lz9oCNmHsqRRP0VAoGAEy/9\n6vAkF8enXGFE2JX0MAcBFkHzoZYCQgLX1a9uVcIwFC2DC7S/dOsvUOLAFejONcGW\nj+s4dd4HY2dYpLpHbizyG19vpzE6CZrOFjxSHCeGBfFJcLoKw+vjYcilZpzhH1rH\nUMQeqTw/fa0YIlPs5ubfzwFCWRR/ouaojvveAy8CgYBKgZ95EzHpzOdQhvxeyh/M\nF7Vh84QmRoJd1bcIKGNIlAYLtDLyYXEJWkNewbChTmruzCPSxzA3A/OKeK+IRs3o\n8WJP91rpiVXv7HQiS4OO3vnmgW7J+2twKaserPle3hevCIUPMiGylHuR+P1Ar0Jd\no0vlNkyjfTpUAksyuymV5Q==\n-----END PRIVATE KEY-----\n";
 
 const doc = new GoogleSpreadsheet(SPREADSHEET_ID);
 
@@ -94,9 +94,10 @@ class Home extends React.Component {
       }
       else
       {
-        doc.useServiceAccountAuth({
-          client_email: CLIENT_EMAIL,
-          private_key: PRIVATE_KEY,
+        doc.useApiKey({
+
+          /*client_email: CLIENT_EMAIL,
+          private_key: PRIVATE_KEY,*/
         });
     
         // loads document properties and worksheets-
@@ -123,10 +124,10 @@ class Home extends React.Component {
       else
       {
 
-        doc.useServiceAccountAuth({
+        /*doc.useServiceAccountAuth({
           client_email: CLIENT_EMAIL,
           private_key: PRIVATE_KEY,
-        });
+        });*/
     
         // loads document properties and worksheets-
          doc.loadInfo();
@@ -157,6 +158,7 @@ class Home extends React.Component {
     const sheetsToData = async () => {
       try {
         await doc.useServiceAccountAuth({
+          //key: "AIzaSyCZlmooivp6d9prrTllhZNlGfzjYeq0tx4"
           client_email: CLIENT_EMAIL,
           private_key: PRIVATE_KEY,
         });
