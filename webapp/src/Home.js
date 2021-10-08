@@ -330,11 +330,11 @@ class Home extends React.Component {
 
       } catch (e) {
           //error if google sheets quota reached
-          alert("hmmm... the site failed to load, reloading in a few seconds, exit this alert!" );
-          window.location.reload()
-          /*setTimeout(() => {
+          alert("hmmm... the site failed to load, i'll reload automatically, exit this alert!" );
+          
+          setTimeout(() => {
             window.location.reload()
-          }, 10000);*/
+          }, 5000);
       }
     };
 
