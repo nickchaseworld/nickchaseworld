@@ -33,7 +33,7 @@ const PRIVATE_KEY = "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAA
 const doc = new GoogleSpreadsheet(SPREADSHEET_ID);
 
 function getRandomInt(max) {
-  return Math.floor(Math.random() * 2) + 1;
+  return Math.floor(Math.random() * 1) + 1;
 }
 
 class Home extends React.Component { 
