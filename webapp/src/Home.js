@@ -94,10 +94,9 @@ class Home extends React.Component {
       }
       else
       {
-        doc.useApiKey({
-
-          /*client_email: CLIENT_EMAIL,
-          private_key: PRIVATE_KEY,*/
+        doc.useServiceAccountAuth({
+          client_email: CLIENT_EMAIL,
+          private_key: PRIVATE_KEY,
         });
     
         // loads document properties and worksheets-
@@ -105,11 +104,17 @@ class Home extends React.Component {
         
         var sheet = doc.sheetsById["0"];
         sheet.addRows([
-          { Words: val,  VISIBLE: 'N'}])
+          { Words: val,  VISIBLE: 'Y'}])
            
         alert(this.state.wordAccept)
         document.getElementById("wordToSubmit").value = ""
+
+        setTimeout(() => {
+          window.location.reload()
+        }, 2000);
+        
       }
+      
   }
 
   //function to submitword, TYPED
@@ -124,22 +129,28 @@ class Home extends React.Component {
       else
       {
 
-        /*doc.useServiceAccountAuth({
+        doc.useServiceAccountAuth({
           client_email: CLIENT_EMAIL,
           private_key: PRIVATE_KEY,
-        });*/
+        });
     
         // loads document properties and worksheets-
          doc.loadInfo();
         
         var sheet = doc.sheetsById["0"];
         sheet.addRows([
-          { Words: wordInput.target.value,  VISIBLE: 'N'}])
+          { Words: wordInput.target.value,  VISIBLE: 'Y'}])
            
         alert(this.state.wordAccept)
         wordInput.target.value = ""
+
+        setTimeout(() => {
+          window.location.reload()
+        }, 2000);
+      
       }
     }
+
   }
 
   componentDidMount()
