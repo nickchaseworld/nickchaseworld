@@ -237,9 +237,11 @@ class Home extends React.Component {
           //a catch all to only code text color and thing once
           if((finalArray[10] !== null) || (finalArray[14] !== null))
           {
+          
             if(finalArray[10] !== null)
             {
-              this.setState({alertSongImage: (finalArray[10].split("https://drive.google.com/file/d/")[1]).split("/view?usp=sharing")[0], alertSongSpotify: finalArray[11], alertSongAppleMusic: finalArray[12], alertSongSoundcloud: finalArray[13]})
+              this.setState({alertSongImage: finalArray[10], alertSongSpotify: finalArray[11], alertSongAppleMusic: finalArray[12], alertSongSoundcloud: finalArray[13]})
+            
             }
             if(finalArray[14] !== null)
             {
@@ -338,6 +340,8 @@ class Home extends React.Component {
               }
             }
           this.setState({images: renderIntake})});
+
+          
 
       } catch (e) {
           //error if google sheets quota reached
